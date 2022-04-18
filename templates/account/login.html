@@ -1,0 +1,127 @@
+{% extends "base/base.html" %}
+
+{% load account socialaccount %}
+
+
+{% block contents %}
+<style>
+  .banner-inner {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .login_page {
+    width:60%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .titlebox {
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .logins {
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .login_form {
+    width:60%;
+    height: 50px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .login_label {
+    width: 20%;
+    height: 50px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .login_input {
+    border:1px solid black;
+    border-radius: 2px;
+    padding-left: 10px !important;;
+    width: 60%;
+    height: 60%;
+  }
+  .login_input_check_box {
+    width: 60%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .login_input_check {
+    display: auto;
+    padding-left: 5px !important;
+    -webkit-appearance:auto;
+  }
+  .signin_or_findpassword {
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+</style>
+
+<div class="banner-inner">
+
+  <div class="login_page">
+    <div class="titlebox">
+      <h1>로그인</h1>
+    </div>
+  
+  {% get_providers as socialaccount_providers %}
+    <form class="logins" method="POST" action="{% url 'account_login' %}">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="login_form" >
+        <div class="login_label">{{ field.label }}</div>
+        {% if field.field.widget.input_type == 'checkbox' %}
+        <div class="login_input_check_box">
+          <input type="{{ field.field.widget.input_type }}" class="login_input_check"/>
+        </div>
+        {% else %}
+        <input type="{{ field.field.widget.input_type }}" class="login_input" id="{{ field.id_for_label }}" name="{{ field.name }}"/>
+        {% endif %}
+      </div>
+      {% if field.errors %}
+      <span style="color: red;"> {{ field.errors }}</span>
+      {% endif %}
+      {% endfor %}
+      {% comment %} {{ form.as_p }} {% endcomment %}
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      <div class='signin_or_findpassword'>
+        <a class="button secondaryAction" href="{% url 'account_reset_password' %}">비밀번호 찾기</a>
+        <button class="primaryAction" type="submit">Sign In</button>
+      </div>
+    </form>
+    
+    {% include "socialaccount/snippets/login_extra.html" %}
+    
+    <a href="{{ signup_url }}">회원 가입</a>
+    <div class="socialaccount_ballot">
+      <ul class="socialaccount_providers">
+        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      </ul>
+    </div>
+    
+    
+
+
+  </div>
+</div>
+{% endblock %}
