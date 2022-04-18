@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     "qandaBoard",
     "pricePredict",
     "chatbot",
+    "bbuser",
 ]
 
 MIDDLEWARE = [
