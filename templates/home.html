@@ -1,10 +1,40 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block contents %}
-<div class="banner-inner">
+<div class="banner-inner" id='Nav'>
     <div class ="banner-cover">
         <h1>원하시는 상품의 물가를 확인해보세요</h1>
+        <div class="search">
+            <input type="text"
+                    id = 'value'
+                    placeholder="궁금한 제품을 검색하세요."
+                    onfocus="this.placeholder=''" 
+                    onKeypress="javascript:if(event.keyCode==13){search()}">
+            <button type="button" style = 'background-color:transparent;' onclick='search()'>
+                <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+            </button>
+        </div>
     </div>
 
 </div>
+
+<script>
+    function search() {
+        var price = document.getElementById('value').value;
+        if (price=='닭고기'){
+            location.href="닭고기";
+        }else if (price=='소고기'){
+            location.href="소고기";
+        }else if (price=='계란'){
+            location.href="계란";
+        }else if (price=='라면'){
+            location.href="라면";
+        }else if (price=='커피'){
+            location.href="커피";
+        }else {
+            alert('다시 입력해주세요!')
+            document.getElementById("value").value ='';
+        }
+    }
+    </script>
 {% endblock contents %}
