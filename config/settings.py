@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "qandaBoard",
     "pricePredict",
     "chatbot",
+    "bbuser",
 ]
 
 MIDDLEWARE = [
@@ -89,7 +90,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 
 DATABASES = my_settings.DATABASES
-
+print(my_settings.DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 

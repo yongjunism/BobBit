@@ -6,8 +6,8 @@
 {% block contents %}
     <div class="banner-inner">
         {% if user.is_authenticated %}
-        {% get_social_accounts user as accounts %}
-        
+        {% comment %} {% get_social_accounts user as accounts %} {% endcomment %}
+
         {% for account in user.socialaccount_set.all %}
             {{ account.extra_data.nickname }}
             <img src={{ account.extra_data.profile_image}}>
