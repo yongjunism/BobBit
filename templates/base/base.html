@@ -88,10 +88,15 @@
                 </div>
             </div>
             <div class="header-user">
-
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'account_logout' %}">
+                    {% csrf_token %}
+                    <button class="user-btn" type="submit" style="cursor:pointer">로그아웃</button>
+                  </form>
+                {% else %}
                     <a href="/accounts/login" class="login" rel="nofollow">로그인 </a>
                     <a href="/accounts/signup" class="user-btn" rel="nofollow">회원가입</a>
-                
+                {% endif %}
             </div>
             <!--        手机端显示-->
             <div class="iconfont icon_menu ph-menu-icon"></div>
