@@ -6,8 +6,3 @@ from django.views.generic.base import TemplateView
 
 class TestView(TemplateView):
     template_name = "bbuser/test.html"
-
-
-def TestView2():
-    context = {}
-    return render(context=context)
