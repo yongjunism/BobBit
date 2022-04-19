@@ -7,13 +7,12 @@
     <div class="banner-inner">
         {% if user.is_authenticated %}
         {% comment %} {% get_social_accounts user as accounts %} {% endcomment %}
-
+        {{ user }}
         {% for account in user.socialaccount_set.all %}
             {{ account.extra_data.nickname }}
             <img src={{ account.extra_data.profile_image}}>
             <a href="/accounts/logout"> 로그아웃 </a>
         {% endfor %}
-
         {% else %}
             <a href="/accounts/naver/login/?process=login">naver</a>
         {% endif %}
