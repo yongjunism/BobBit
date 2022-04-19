@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "pricePredict",
     "chatbot",
     "bbuser",
+    "mypage",
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,6 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
 
 AUTH_USER_MODEL = "bbuser.User"
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)

@@ -24,4 +24,5 @@ urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("usertest/", include("bbuser.urls")),
     path("price/", include("pricePredict.urls")),
+    path('mypage/', include('mypage.urls')),
 ]
