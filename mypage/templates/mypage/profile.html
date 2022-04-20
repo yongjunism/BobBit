@@ -2,46 +2,52 @@
 {% block title %}Profile Page{% endblock title %}
 {% load static %}
 {% block contents %}
-<html lang="ko">
-    <head>
-        <title> 마이페이지 </title>
-    </head>
-<div class="banner-inner">
-  <center>
-    <h2>마이페이지</h2>
-    <br>
-    <div class="content-section">
-        <div class="media">
-            <img src={% if person.profile.image %}"{{ person.profile.image.url }}"{% else %}"https://i.stack.imgur.com/34AD2.jpg"{% endif %} 
-            width="150rem" style="border-radius: 50%;" alt="">
-          <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}님</h2>
+  <header>
+    <h1>마이페이지</h1>
+    <style>
+      .container{
+        width: 600px; 
+        padding: 20px; 
+        margin: 20px;
+        border: 3px solid black;
+      } 
+      .item {
+        display: inline-flex;
+        padding: 50px
+      }
+    </style>
+  </header>
+  <section class="content">
+
+    <section class="main">
+      <h2 class="account-heading">{{ user.username }}님</h2>
             <div class="buttons"> 
                 <button id="" onclick="location.href='' " class="btn btn-outline-primary px-4">회원정보 변경</button> 
                 <button id="" onclick="location.href='' "class="btn btn-primary px-4 ms-3">회원탈퇴</button> </div>
-            <p>이름</p>
-            <hr align="center" style="border: solid 1px; width: 30%;">
-            <p>{{ user.username }}</p>
+          <div class="container container1">
+            <div class="item">아이디
+            <hr style="width: 30%; border: thin solid;">
+            {{ user.username }}</div>
             <br>
-            <p>닉네임</p>
-            <hr align="center" style="border: solid 1px; width: 30%;">
-            <p>{{ user.username }}</p>
+            <div class="item">이름
+            <hr style="border: solid 1px; width: 30%;">
+            {{ user.username }}</div>
             <br>
-            <p>이메일</p>
-            <hr align="center" style="border: solid 1px; width: 30%;">
-            <p>{{ user.username }}</p>
+            <div class="item">이메일
+            <hr style="border: solid 1px; width: 30%;">
+            {{ user.username }}</div>
             <br>
-            <p>주소</p>
-            <hr align="center" style="border: solid 1px; width: 30%;">
-            <p>{{ user.username }}</p>
+            <div class="item">주소
+            <hr style="border: solid 1px; width: 30%;">
+            {{ user.username }}</div>
             <br>
-            <p>포인트</p>
-            <hr align="center" style="border: solid 1px; width: 30%;">
-            <p>{{ user.username }}</p>
+            <div class="item">포인트
+            <hr style="border: solid 1px; width: 30%;">
+            {{ user.username }}</div>
             <p class="text-secondary">{{ user.email }}</p>
           </div>
-        </div>
-  </center><!-- FORM HERE -->
-      </div>
-{% endblock contents %}
+    </section>
 
+  </section>
+{% endblock contents %}
+<!-- FORM HERE -->

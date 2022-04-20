@@ -1,0 +1,84 @@
+{% extends 'base/base.html' %}
+{% block title %}Profile Page{% endblock title %}
+{% load static %}
+{% block contents %}
+<!-- <html lang="ko">
+    <head>
+        <title> 마이페이지 </title>
+    </head>
+<div class="banner-inner">
+  
+    <h2>마이페이지</h2>
+    <br>
+    <div class="content-section">
+        <div class="media">
+            <img src={% if person.profile.image %}"{{ person.profile.image.url }}"{% else %}"https://i.stack.imgur.com/34AD2.jpg"{% endif %} 
+            width="150rem" style="border-radius: 50%;" alt="">
+          <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}님</h2>
+            <div class="buttons"> 
+                <button id="" onclick="location.href='' " class="btn btn-outline-primary px-4">회원정보 변경</button> 
+                <button id="" onclick="location.href='' "class="btn btn-primary px-4 ms-3">회원탈퇴</button> </div>
+            <p>이름</p>
+            <hr style="border: solid 1px; width: 30%;">
+            <p>{{ user.username }}</p>
+            <br>
+            <p>닉네임</p>
+            <hr style="border: solid 1px; width: 30%;">
+            <p>{{ user.username }}</p>
+            <br>
+            <p>이메일</p>
+            <hr style="border: solid 1px; width: 30%;">
+            <p>{{ user.username }}</p>
+            <br>
+            <p>포인트</p>
+            <hr style="border: solid 1px; width: 30%;">
+            <p>{{ user.username }}</p>
+            <p class="text-secondary">{{ user.email }}</p>
+          </div>
+        </div>
+      </div> -->
+{% endblock contents %}
+<!-- FORM HERE -->
+
+<html>
+  <head>
+    <title>마이페이지</title>
+    <style>
+      .container{
+        border: 1px solid black;
+        display:inline-flex;
+        padding: 30px;
+        align-content: center !important;
+      } 
+      .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 50px
+      }
+    </style>
+  </head>
+    <body>
+      <div class="container container1">
+        <div class="item">1</div>
+        <div class="item">1</div>
+        <div class="item">0</div>
+        <div class="item">0</div>
+      </div>
+      
+      <div class="container container2">
+        <div class="item">2</div>
+        <div class="item">2</div>
+        <div class="item">1</div>
+        <div class="item">1</div>
+      </div>
+      
+      <div class="container container3">
+        <div class="item">3</div>
+        <div class="item">3</div>
+        <div class="item">0</div>
+        <div class="item">0</div>
+      </div>
+    </body>
+</html>

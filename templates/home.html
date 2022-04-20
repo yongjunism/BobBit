@@ -1,10 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block contents %}
-<<<<<<< HEAD
-<div class="banner-inner" id='Nav'>
-=======
->>>>>>> dd28732af7dc07fe795a720b340a2563d454664f
     <div class ="banner-cover">
         <h1>원하시는 상품의 물가를 확인해보세요</h1>
         <div class="search">
@@ -18,28 +14,4 @@
             </button>
         </div>
     </div>
-<<<<<<< HEAD
-</div>
-
-<script>
-    function search() {
-        var price = document.getElementById('value').value;
-        if (price=='닭고기'){
-            location.href="닭고기";
-        }else if (price=='소고기'){
-            location.href="소고기";
-        }else if (price=='계란'){
-            location.href="계란";
-        }else if (price=='라면'){
-            location.href="라면";
-        }else if (price=='커피'){
-            location.href="커피";
-        }else {
-            alert('다시 입력해주세요!')
-            document.getElementById("value").value ='';
-        }
-    }
-    </script>
-=======
->>>>>>> dd28732af7dc07fe795a720b340a2563d454664f
 {% endblock contents %}
