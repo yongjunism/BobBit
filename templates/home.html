@@ -1,5 +1,9 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% block head %}
+<link href="{% static 'css/home.css' %}" rel="stylesheet">
+{% endblock head %}
+
 {% block contents %}
 <div class="banner-inner" id='Nav'>
     <div class ="banner-cover">
@@ -10,7 +14,7 @@
                     placeholder="궁금한 제품을 검색하세요."
                     onfocus="this.placeholder=''" 
                     onKeypress="javascript:if(event.keyCode==13){search()}">
-            <button type="button" style = 'background-color:transparent;' onclick='search()'>
+            <button class = "mainbutton" type="button" style = 'background-color:transparent;' onclick='search()'>
                 <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
             </button>
         </div>
