@@ -6,14 +6,14 @@
 input {
     width: 100%;
     border-radius: 8px;
-    padding: 10px 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: #8fe0e9;
     height: 40px;
     color: #fff;
     text-align: center;
     font-size: 25px;
     font-weight: bold;
-    margin-top: 20px;
 }
 
 input::placeholder {
@@ -26,19 +26,18 @@ input::placeholder {
 img {
     position: absolute;
     width: 17px;
-    top: 9px;
-    right: 10px;
-    margin: 0;
+    top: 21px;
+    right: 15px;
     float: right;
     filter: invert(100%);
 }
 
 .mainbutton {
     position: absolute;
-    width: 45px;
-    height: 35px;
-    top: 2rem;
-    right: 3px;
+    width: 55px;
+    height: 60px;
+    top: 0px;
+    right: 0px;
     border: 0;
     outline: 0;
     cursor: pointer;
