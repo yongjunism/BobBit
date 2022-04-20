@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block contents %}
+<div class="banner-inner">
+    <div class ="banner-cover" style='background-color:white;'>
+        <!DOCTYPE html>
+        <html lang="ko">
+            <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+                <meta name="description" content="" />
+                <meta name="author" content="" />
+                <meta charset="utf-8"/>
+                <style>
+
+                </style>
+                <title>질문 상세</title>
+            </head>
+            
+            <body>
+                <div class="wrap1">
+                    <div class="wrap2">
+                        <div class="content">{{board.board_title}}</div>
+                        <div class="content">{{board.board_reg_date|date:"Y.m.d H:i"}}</div>
+                        <div class="content">{{board.board_content}} </div>
+                    </div>
+                </div>
+            </body>
+        </html>
+    </div>
+</div>
+{% endblock contents %}
