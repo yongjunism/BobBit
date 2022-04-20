@@ -25,14 +25,26 @@
         {% endfor %}
         </div>
         <section class = "title_section">
-            <h1>{{product_info.pName}}</h1>
+            <h1>{{icon}} {{product_info.pName}}</h1>
+            <li> 대형마트 "원가" 기준</li>
         </section>
-        <div class = "datepicker">
-            <input type="text" id="datePicker" value={{today.year}}-{{today.month}}-{{today.day}}>
+        <div class= "line"></div>
+        <div id = "content-area">
+            <div id = "content_1">
+                <div class = "datearea">
+                    <li>날짜를 선택해 원하는 차트를 이동해보세요👉</li>
+                    <div class = "datepicker">
+                        <input type="text" id="datePicker" value={{today.year}}-{{today.month}}-{{today.day}}>
+                    </div>
+                </div>
+                <section class ="chartarea">
+                    <div id="chartdiv"></div>
+                </section>
+            </div>
+            <div id = "content_2">
+
+            </div>
         </div>
-        <section class ="chartarea">
-            <div id="chartdiv"></div>
-        </section>
     </div>
 {% endblock contents %}
 {% block script_section %}
