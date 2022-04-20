@@ -764,12 +764,15 @@ am5.ready(function () {
         fillField: "color",
         strokeField: "color",
         y: am5.percent(105),
-        x: am5.percent(50),
+        x: am5.percent(40),
     }));
 
     legend.data.setAll([{
-        name: "진라면",
+        name: "정가",
         color: root.interfaceColors.get("primaryButton"),
+    }, {
+        name: "예측가",
+        color: root.interfaceColors.get("negative"),
     }]);
 
     // Add cursor

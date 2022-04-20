@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Product, Categori
 from django.forms.models import model_to_dict
 from datetime import date
+from .categori_to_emoji import EMOJI
 
 # Create your views here.
 
@@ -31,5 +32,6 @@ def priceViewbyParam(request, product_id):
             request, 'pricePredict/price_page.html',
             {'today': today,
              'pd_list': pd_list,
+             'icon': EMOJI[cNo],
              'product_info': product_info}
         )
