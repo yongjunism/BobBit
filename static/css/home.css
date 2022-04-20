@@ -43,3 +43,18 @@
     cursor: pointer;
     background-color: transparent;
 }
+
+.line{
+    width: 60%;
+    height: 2px;
+    background-color: #e7e7e7;
+    border:none;
+}
+
+.def{
+    margin-left: 50%;
+    /* margin-right: 30%; */
+    width: 450px;
+    border: 0.2px;
+    border-color: black;
+}
