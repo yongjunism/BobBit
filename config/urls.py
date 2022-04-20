@@ -22,7 +22,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("", HomeView.as_view(), name="home"),
-    path("usertest/", include("bbuser.urls")),
+    path("user/", include("bbuser.urls")),
     path("price/", include("pricePredict.urls"), name='price'),
     path('mypage/', include('mypage.urls')),
     path('', include('qandaBoard.urls')),
