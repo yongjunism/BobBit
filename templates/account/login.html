@@ -1,0 +1,178 @@
+{% extends "base/base.html" %}
+
+{% load account socialaccount %}
+
+{% block head %}
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Cabin+Sketch&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+  .banner-inner {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+  }
+  .login_page {
+    margin-top: 40px !important;
+    width:450px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .titlebox {
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .logins {
+    width:450px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .login_form {
+    width:450px;
+    height: 50px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .login_label {
+    width: 20%;
+    height: 50px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .login_input {
+    border:1px solid light-gray;
+    border-radius: 2px;
+    padding-left: 10px !important;;
+    width: 450px;
+    height: 60%;
+  }
+  .login_input_check_box {
+    width: 300px;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .login_input_check {
+    width:auto;
+    padding-left: 5px !important;
+    -webkit-appearance:auto;
+  }
+  .signin_or_findpassword {
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    flex-wrap: wrap;
+  }
+  .find_password {
+    width:150px;
+    height: 40px;
+    border: 1px solid lightgray;
+    border-radius:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color:lightgray;
+    cursor: pointer;
+  }
+  .signin {
+    width:250px;
+    height: 40px;
+    margin-left:30px !important;
+    border: 1px solid lightgray;
+    border-radius:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: gray;
+    cursor: pointer;
+  }
+
+  .signup_naver {
+    width:450px;
+    height: 40px;
+    margin-top: 10px !important; 
+    border: 1px solid lightgreen;
+    border-radius:5px;  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color:lightgreen;
+    cursor: pointer;
+  }
+
+  .signup {
+    width:450px;
+    height: 40px;
+    margin-top: 10px; 
+    border: 1px solid lightgray;
+    border-radius:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color:lightgray;
+  }
+</style>
+{% endblock head %} 
+{% block contents %}
+
+
+<div class="banner-inner">
+
+  <div class="login_page">
+    <div class="titlebox">
+      <h1>로그인</h1>
+    </div>
+  
+  {% get_providers as socialaccount_providers %}
+    <form class="logins" method="POST" action="{% url 'account_login' %}">
+      {% csrf_token %}
+      {% for field in form %}
+      <div class="login_form" >
+        {% if field.field.widget.input_type == 'checkbox' %}
+        <div class="login_label">저장하기</div>
+        <div class="login_input_check_box">
+          <input type="{{ field.field.widget.input_type }}" class="login_input_check"/>
+        </div>
+        {% else %}
+        <input type="{{ field.field.widget.input_type }}" class="login_input" id="{{ field.id_for_label }}" name="{{ field.name }}" placeholder=" {{ field.label }} "/>
+        {% endif %}
+      </div>
+      {% if field.errors %}
+      <span style="color: red;"> {{ field.errors }}</span>
+      {% endif %}
+      {% endfor %}
+      <div class='signin_or_findpassword'>
+        <a href="{% url 'account_reset_password' %}"><button class="find_password" >비밀번호 찾기</button></a>
+        <button class="signin" type="submit">로그인</button>
+      </div>
+      
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+      
+    </form>
+    <form method="post" class="signup_naver_form" action="/accounts/naver/login/?process=login">
+      {% csrf_token %}
+      <button class="signup_naver" type="submit">네이버로그인</button>
+    </form>
+    {% include "socialaccount/snippets/login_extra.html" %}
+    <a href="{{ signup_url }}" class="signup">회원 가입</a>
+  </div>
+</div>
+{% endblock %}
