@@ -30,32 +30,32 @@
                             <li>
                                 <h3>품목</h3>
                                 <div class="download-box idoc-box">
-                                    <a href="https://help.mockplus.com/p/249" target="_blank">
+                                    <a href="{% url 'pricePredict:price_page' 8%}">
                                         <i class="iconfont">🐔</i>
                                         <p>닭고기</p>
                                         <span>닭 사료에 해당하는 곡물 지표에 따른 닭고기의 가격을 확인할 수 있습니다.</span>
                                     </a>
-                                    <a href="https://help.mockplus.com/p/498" target="_blank">
+                                    <a href="{% url 'pricePredict:price_page' 3%}">
                                         <i class="iconfont">🐷</i>
                                         <p>돼지고기</p>
                                         <span>돼지 사료에 해당하는 곡물 지표에 따른 돼지고기의 가격을 확인할 수 있습니다.</span>
                                     </a>
-                                    <a href="https://help.mockplus.com/p/323" target="_blank">
+                                    <a href="{% url 'pricePredict:price_page' 5%}">
                                         <i class="iconfont">🐮</i>
                                         <p>소고기</p>
                                         <span>소 사료에 해당하는 곡물 지표에 따른 소고기의 가격을 확인할 수 있습니다.</span>
                                     </a>
-                                    <a href="https://help.mockplus.com/p/250" target="_blank">
+                                    <a href="{% url 'pricePredict:price_page' 9%}">
                                         <i class="iconfont">🥚</i>
                                         <p>계란</p>
                                         <span>계란은 닭고기의 지표와 닭 평균가의 지표가 더해져 가격이 계산됩니다.</span>
                                     </a>
-                                    <a href="https://help.mockplus.com/p/251" target="_blank">
+                                    <a href="{% url 'pricePredict:price_page' 1%}">
                                         <i class="iconfont">🍜</i>
                                         <p>라면</p>
                                         <span>밀 가격에 따른 라면이 가격을 확인할 수 있습니다.</span>
                                     </a>
-                                    <a href="https://help.mockplus.com/p/507#1" target="_blank">
+                                    <a href="{% url 'pricePredict:price_page' 6%}">
                                         <i class="iconfont">☕</i>
                                         <p>커피</p>
                                         <span>설탕 및 카카오의 가격에 따른 커피 가격을 확인할 수 있습니다.</span>
@@ -124,11 +124,9 @@
             <a href="javascript:location.replace(location);"><i class="iconfont icon_tag_refresh"></i></a>
         </div>
     </header>
-    <div class="clear-space">
-        <section class="global-banner">
-            {% block contents %} 
-            {% endblock contents %}
-        </section>
+    <div class="Container">
+        {% block contents %} 
+        {% endblock contents%}
     </div>
     <script src="{% static 'js/base.js' %}"></script>
     {% block script_section %} 
