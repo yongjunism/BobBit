@@ -13,3 +13,4 @@ class ProfileForm(forms.Form):
     def clean(self):
         cleaned_data = super().clean()
         profile_img = cleaned_data.get("profile_img")
+        last_name = cleaned_data.get("last_name")
