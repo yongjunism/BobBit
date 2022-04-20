@@ -1326,6 +1326,8 @@ footer .footer-foot .foot-last {
 .banner-cover h1 {
     font-family: 'Do Hyeon', sans-serif;
     color: #f0f0f0;
+    font-size: 50px;
+    padding-bottom: 5px;
 }
 
 .global-banner .banner-inner .banner-title1 {
