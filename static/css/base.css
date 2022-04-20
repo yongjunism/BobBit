@@ -658,9 +658,47 @@ h1 {
 
 .header-content .header-user {
     float: right;
+    display: flex;
+    width:300px;
     position: relative;
+    height: 36px;
 }
 
+.header-content .header-user .header-user-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    width: 200px;
+}
+.header-content .header-user .header-user-profile .header-user-profile-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.header-content .header-user .base_profile_img_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+    width: 35px;
+}
+
+.header-content .header-user .base_profile_img_container .base_profile_img{
+    position: unset;
+    width: 30px;
+    height: 30px;
+    border-radius: 80%;
+    top: unset;
+    right: unset;
+    margin: unset;
+}
+
+.header-content .header-user .header_profile_logout {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .header-content .header-user::after {
     clear: both;
     width: 0;
@@ -1309,6 +1347,22 @@ footer .footer-foot .foot-last {
     box-sizing: border-box;
     top: 80px;
     color: #000000;
+}
+
+.banner-cover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #82CCD4;
+    height: 30rem;
+}
+
+.banner-cover h1 {
+    font-family: 'Do Hyeon', sans-serif;
+    color: #f0f0f0;
+    font-size: 50px;
+    padding-bottom: 5px;
 }
 
 .global-banner .banner-inner .banner-title1 {
@@ -3192,36 +3246,6 @@ body .global-video-bullet-box .video-container .vjs-paused .vjs-big-play-button 
     .global-banner .banner-inner .banner-title1 {
         font-size: 20px;
     }
-}
-
-.search {
-    position: relative;
-    width: 480px;
-}
-
-input {
-    width: 100%;
-    border: 1px solid #bbb;
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-size: 16px;
-}
-
-img {
-    position: absolute;
-    width: 17px;
-    top: 10px;
-    right: 12px;
-    margin: 0;
-}
-
-.banner-cover {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #82CCD4;
-    height: 30rem;
 }
 
 .banner-cover h1 {
