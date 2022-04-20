@@ -20,11 +20,13 @@
 <script>
     function search() {
         var price = document.getElementById('value').value;
-        if (price=='닭고기'){
+        if (price=='닭고기' || price=='닭'){
             location.href="닭고기";
-        }else if (price=='소고기'){
+        }else if (price=='소고기' || price=='소'){
             location.href="소고기";
-        }else if (price=='계란'){
+        }else if (price=='돼지고기' || price=='돼지'){
+            location.href="돼지고기";
+        }else if (price=='계란' || price =='달걀'){
             location.href="계란";
         }else if (price=='라면'){
             location.href="라면";
