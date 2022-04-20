@@ -44,14 +44,14 @@
     background-color: transparent;
 }
 
-.line{
+.line {
     width: 60%;
     height: 2px;
     background-color: #e7e7e7;
-    border:none;
+    border: none;
 }
 
-.def{
+.def {
     margin-left: 50%;
     /* margin-right: 30%; */
     width: 450px;
