@@ -25,4 +25,5 @@ urlpatterns = [
     path("usertest/", include("bbuser.urls")),
     path("price/", include("pricePredict.urls")),
     path('mypage/', include('mypage.urls')),
+    path('', include('qandaBoard.urls')),
 ]
