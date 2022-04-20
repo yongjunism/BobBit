@@ -16,7 +16,7 @@
 <body class="home">
     <header class="header-of-page">
         <div class="header-content black-bg">
-            <a href="./" class="logo">
+            <a href="../../" class="logo">
                 🍚 밥비트
             </a>
             <div class="nav-menu">
@@ -89,10 +89,21 @@
             </div>
             <div class="header-user">
                 {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'account_logout' %}">
+                    <div class="header-user-profile">
+                        <p class='header-user-profile-text'>Point : {{ user.point }}</p>
+                        <div class="base_profile_img_container">
+                            {% if user.profile_img %}
+                            <img class='base_profile_img' src="/media/{{ user.profile_img }}">
+                            {% else %}
+                            <img class='base_profile_img' src="/media/profile/default.png">
+                            {% endif %}
+                        </div>
+                        <p class='header-user-profile-text'>{{ user.username }}</p>
+                    </div>
+                    <form class="header_profile_logout" method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
                     <button class="user-btn" type="submit" style="cursor:pointer">로그아웃</button>
-                  </form>
+                    </form>
                 {% else %}
                     <a href="/accounts/login" class="login" rel="nofollow">로그인 </a>
                     <a href="/accounts/signup" class="user-btn" rel="nofollow">회원가입</a>

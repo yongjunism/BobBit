@@ -1,0 +1,193 @@
+{% extends 'base/base.html' %}
+{% block head %}
+<style>
+    .banner-inner {
+        display:flex;
+        justify-content: center !important;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .profile_container {
+        display:flex;
+        justify-content: center !important;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .title {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .img_box {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        width: 100%;
+    }
+    #image_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:200px;
+        height:200px;
+        text-align: center; 
+    }
+    .profile_img {
+        margin: 0 auto;
+        top: unset;
+        right: unset;
+        width: 200px;
+        height: 200px;
+        border-radius: 80%;
+        display: block; margin: 0px auto;
+    }
+
+    .profile_form {
+        display:flex;
+        justify-content:center;
+        flex-wrap :wrap;
+        width: 40%;
+    }
+
+    .form-group {
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        width: 100%;
+    } 
+    .file_input_label {
+        width: 100%;
+        height: 40px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid lightgray;
+        border-radius:10px;
+        margin-top:10px;
+    }
+
+    .button-container {
+        margin-top: 20px !important;
+    }
+    .user-btn1 {
+        height: 36px;
+        width: 133px;
+        line-height: 32px;
+        border-radius: 20px;
+        border: 2px solid #194740;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #194740;
+        text-align: center;
+        margin-left: 30px;
+        display: block;
+        background: rgba(255, 255, 255, 0.3);
+        float: left;
+        margin-right: 20px !important;
+    }
+    
+    .user-btn1:hover {
+        color: black;
+    }
+    .user-btn2 {
+        height: 36px;
+        width: 100px;
+        line-height: 32px;
+        border-radius: 20px;
+        border: 2px solid #E9E9E9;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: gray;
+        text-align: center;
+        margin-left: 30px;
+        display: block;
+        background: rgba(255, 255, 255, 0.3);
+        float: left;
+    }
+    
+    .user-btn2:hover {
+        background-color: #194740;
+        border-color: #194740;
+        color: #ffffff;
+    }
+
+    .name_input {
+        width: 100%;
+        height: 20px;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid lightgray;
+        border-radius:5px;
+        margin-top: 10px !important;
+        padding: 10px !important;
+    }
+</style>
+
+{% endblock head %}
+{% block contents %}
+<div class="banner-inner">
+    <div class="profile_container">
+        <div class="title">
+            <h1>프로필 사진을 넣으세요</h1>
+        </div>
+        <div class="img_box">
+            <div id="image_container">
+                {% if user.profile_img %}
+                <img class='profile_img' src="/media/{{ user.profile_img }}" >
+                {% else %}
+                <img class='profile_img' src="/media/profile/default.png" >
+                {% endif %}
+            </div>
+        </div>
+        <form class="profile_form"method = "post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}    
+
+                {% if field.field.widget.input_type == 'file' %}
+                    <div class="form-group mb-3">
+                        <label class="file_input_label" for="{{ field.id_for_label }}">프로필 사진을 업로드하세요</label>
+                        <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" 
+                        placeholder="{{ field.label }}" name="{{ field.name }}" style ="display:none" />
+                    </div>
+                {% else %}
+                    <div class="form-group mb-3">
+                        <input class="name_input" type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}" 
+                        placeholder="이름" name="{{ field.name }}"/>
+                    </div>
+                {% endif %}
+            
+                {% if field.errors %}
+                    <span style="color: red;"> {{ field.errors }}</span>
+                {% endif %}
+            {% endfor %}
+            <div class="button-container">
+                <button type="submit" class="user-btn1">프로필사진등록</button>
+                <a href="{% url 'home' %}"><div class="user-btn2">건너뛰기</div></a>
+            </div>
+        </form>
+
+    </div>
+    <script>
+        document.querySelector('#id_profile_img').addEventListener('change', setThumbnail)
+        function setThumbnail(event) {
+            let reader = new FileReader(); 
+            reader.onload = function(event) { 
+                let img = document.querySelector(".profile_img"); 
+                img.setAttribute("src", event.target.result); 
+            }; 
+            reader.readAsDataURL(event.target.files[0]); 
+        }
+
+        let file_input = document.querySelector('input[type="file"]')
+        file_input.addEventListener('change', changeFilename)
+        function changeFilename(event) {
+            let input_label = document.querySelector('.file_input_label');
+            input_label.innerHTML = file_input.value
+        }
+    </script>
+    
+</div>
+{% endblock contents %}
+
