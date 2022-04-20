@@ -22,6 +22,5 @@ class User(AbstractUser):
         return self.username
 
     class Meta:
-        db_table = "BB_user"
         verbose_name = "사용자"
         verbose_name_plural = "사용자"
