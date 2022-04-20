@@ -1,0 +1,60 @@
+.p_Container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 4rem;
+}
+
+
+.title_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title_section h1 {
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+
+
+.catagori-Nav {
+    display: flex;
+    flex-direction: row;
+    padding: 3rem 0 1rem 0;
+}
+
+.catagori-Nav li {
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+    border-right: 2px solid rgb(0, 0, 0, 0.2)
+}
+
+.catagori-Nav li .select {
+    color: #000000;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.catagori-Nav li .non-select {
+    text-decoration: none;
+    font-size: 0.8rem;
+    color: #337D6B;
+    transition: 0.5s;
+}
+
+.catagori-Nav li .non-select:hover {
+    color: black;
+}
+
+.chartarea {
+    width: 40rem;
+}
+
+#chartdiv {
+    width: 100%;
+    height: 500px;
+}

@@ -17,12 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import HomeView
 
-
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
+<<<<<<< HEAD
     path("", HomeView.as_view(), name="home"),
     path("usertest/", include("bbuser.urls")),
     path("price/", include("pricePredict.urls")),
     path('mypage/', include('mypage.urls')),
+=======
+    path("", HomeView.as_view(), name='home'),
+    path("price/", include("pricePredict.urls"), name='price'),
+>>>>>>> dd28732af7dc07fe795a720b340a2563d454664f
 ]
