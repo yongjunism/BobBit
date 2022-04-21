@@ -19,6 +19,7 @@ def index(request):
     return render(request, 'qandaBoard/list.html', context)
 
 #질문 남기기   
+from .models import Board,User
 # @transaction.atomic
 def post(request):
     try:
@@ -29,7 +30,7 @@ def post(request):
             # user = User.objects.get(pk=user_id)
             board = Board(
                 board_title=board_title, 
-                board_content=board_content, board_reg_date = datetime.now() )
+                board_content=board_content, board_reg_date = datetime.now())
             board.save()
             return redirect('/qna')
         else:
