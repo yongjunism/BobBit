@@ -19,7 +19,20 @@
         <br>
         탈퇴시 개인정보 및 이용정보가 삭제되며 복구할 수 없습니다. 
         <br>
-        본인의 비밀번호를 입력한 후 하단의 유의사항 동의에 체크하세요.</p>
+        본인의 비밀번호를 입력한 후 하단의 유의사항 동의에 체크하세요.
+    </p>
+   
+    {% for account in user.socialaccount_set.all %}
+
+    <label>
+        <input type="checkbox" name="ck" onClick="checkDisable(this.form)">
+        <span>유의사항 동의</span>
+    </label>
+    
+    <button type="submit" name="bt" disabled="true">탈퇴하기</button>
+    
+{% empty %}
+    {% if user.is_authenticated %}
     <div>
         <label name="label_password" for="{{ password_form.password.id_for_label }}">{{ password_form.password.label }}</label>
         {{ password_form.password }}
@@ -42,8 +55,12 @@
         <input type="checkbox" name="ck" onClick="checkDisable(this.form)">
         <span>유의사항 동의</span>
     </label>
-    
+
     <button type="submit" name="bt" disabled="true" >탈퇴하기</button>
+    {% endif %}
+{% endfor %}
+ 
+
 </form>
 
 <script type="text/javascript">
