@@ -20,6 +20,8 @@
   <section class="content">
 
     <section class="main">
+      <img src={% if profile.profile_img %}"{{ profile.profile_img }}"{% else %}"https://i.stack.imgur.com/34AD2.jpg"{% endif %} 
+            width="80rem" style="border-radius: 50%;" alt="">
       <h2 class="account-heading">{{ user.username }}님</h2>
             <div class="buttons"> 
                 <button id="" onclick="location.href='' " class="btn btn-outline-primary px-4">회원정보 변경</button> 
@@ -29,22 +31,17 @@
             <hr style="width: 30%; border: thin solid;">
             {{ user.username }}</div>
             <br>
-            <div class="item">이름
+            <div class="item">닉네임
             <hr style="border: solid 1px; width: 30%;">
-            {{ user.username }}</div>
+            {{ user.last_name }}</div>
             <br>
             <div class="item">이메일
             <hr style="border: solid 1px; width: 30%;">
-            {{ user.username }}</div>
-            <br>
-            <div class="item">주소
-            <hr style="border: solid 1px; width: 30%;">
-            {{ user.username }}</div>
+            {{ user.email }}</div>
             <br>
             <div class="item">포인트
             <hr style="border: solid 1px; width: 30%;">
-            {{ user.username }}</div>
-            <p class="text-secondary">{{ user.email }}</p>
+            {{ user.point }}</div>
           </div>
     </section>
 
