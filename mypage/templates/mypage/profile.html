@@ -1,0 +1,70 @@
+{% extends 'base/base.html' %}
+{% block title %}Profile Page{% endblock title %}
+{% load static %}
+{% block contents %}
+  <header>
+    <h1>마이페이지</h1>
+    <style>
+      section { 
+        text-align: center;
+      }
+      h1 { 
+        text-align: center;
+      }
+      .container {
+        width: 30%; 
+        padding: 20px; 
+        margin: 20px;
+        border: 3px solid black;
+        text-align: center;
+      } 
+      .main {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items : center;
+      } 
+      .item {
+        display: inline-flex;
+        padding: 50px
+        align-self: auto;
+      }
+    </style>
+  </header>
+  <section class="content">
+    <section class="main">
+      <div class="base_profile_img_container">
+        {% if user.profile_img %}
+        <img class='base_profile_img' src="/media/{{ user.profile_img }}" width="80rem" style="border-radius: 50%;" alt="Profile_img">
+        {% else %}
+        <img class='base_profile_img' src="/media/profile/default.png" width="80rem" style="border-radius: 50%;" alt="Profile_img">
+        {% endif %}{{ user.username }}님
+    </div>
+            <div class="buttons"> 
+                <button id="" onclick="location.href='/mypage/changeprofile/'" class="btn btn-outline-primary px-4">회원정보 변경</button> 
+                <button id="profile_delete" onclick="location.href='/mypage/profile/delete' "class="btn btn-primary px-4 ms-3">회원탈퇴</button> </div>
+          <div class="container">
+            <div class="item">아이디</div>
+            <hr style="width: 40%; border: thin solid;">
+            <div class="item">{{ user.username }}</div>
+            <br>
+            <br>
+            <div class="item">이름</div>
+            <hr style="border: thin solid; width: 40%;">
+            <div class="item">{{ user.last_name }}</div>
+            <br>
+            <br>
+            <div class="item">이메일</div>
+            <hr style="border: thin solid; width: 40%;">
+            <div class="item">{{ user.email }}</div>
+            <br>
+            <br>
+            <div class="item">포인트</div>
+            <hr style="border: thin solid; width: 40%;">
+            <div class="item">{{ user.point }}</div>
+          </div>
+    </section>
+
+  </section>
+{% endblock contents %}
+<!-- FORM HERE -->
