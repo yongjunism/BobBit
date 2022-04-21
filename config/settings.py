@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     "qandaBoard",
     "pricePredict",
     "chatbot",
+    "bbuser",
+    "mypage",
 ]
 
 MIDDLEWARE = [
@@ -89,7 +91,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 
 DATABASES = my_settings.DATABASES
-
+print(my_settings.DATABASES)
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
@@ -114,11 +116,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Seoul"
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -143,4 +145,16 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/user/pointup"
+
+ACCOUNT_SIGNUP_REDIRECT_URL = "/user/create_profile/"
+
+AUTH_USER_MODEL = "bbuser.User"
+
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+MEDIA_URL = "media/"
+
+MEDIA_ROOT = os.path.join(BASE_DIR, MEDIA_URL)

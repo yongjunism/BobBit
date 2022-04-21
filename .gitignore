@@ -1,8 +1,11 @@
 *.log
 *.pot
 *.pyc
+*.py[cod]
 __pycache__/
+migrations/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
 my_settings.py
+*.py[cod]

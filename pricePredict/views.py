@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Product, Categori
 from django.forms.models import model_to_dict
 from datetime import date
+from .categori_to_emoji import EMOJI
 
 # Create your views here.
 
@@ -11,6 +12,7 @@ def priceViewbyParam(request, product_id):
     # 오늘 날짜
     today = date.today()
     lastmonth = today.month
+
 
     product = Product.objects.get(pNo=product_id)
     product_dict = model_to_dict(product)
@@ -24,7 +26,7 @@ def priceViewbyParam(request, product_id):
         pd_list.append({
             'pName': model_to_dict(item)['pName'],
             'pNo': model_to_dict(item)['pNo'],
-            'price': model_to_dict(item)['price'],
+            'price': model_to_dict(item)['price']
         })
 
     print(product_dict['cKey'])
@@ -34,5 +36,5 @@ def priceViewbyParam(request, product_id):
             {'today': today,
              'pd_list': pd_list,
              'product_info': product_info,
-             'lastmonth': lastmonth}
-        )
+             'lastmonth': lastmonth,
+             'icon': EMOJI[cNo]}
