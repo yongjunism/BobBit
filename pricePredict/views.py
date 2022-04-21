@@ -30,7 +30,7 @@ def priceViewbyParam(request, product_id):
     print(product_dict['cKey'])
     if request.method == 'GET':
         return render(
-            request, 'pricePredict/test.html',
+            request, 'pricePredict/price_page.html',
             {'today': today,
              'pd_list': pd_list,
              'product_info': product_info,
