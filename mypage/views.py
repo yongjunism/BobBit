@@ -41,13 +41,21 @@ def ChangeProfileView(request):
 @login_required
 def profile_delete_view(request):
     if request.method == 'POST':
-        password_form = CheckPasswordForm(request.user, request.POST)
-        
-        if password_form.is_valid():
+        User = get_user_model()
+        user = get_object_or_404(User, username=request.user)
+        if user.socialaccount_set.all():
             request.user.delete()
             logout(request)
             messages.success(request, "회원탈퇴가 완료되었습니다.")
             return redirect('/accounts/login/')
+        else:
+            password_form = CheckPasswordForm(request.user, request.POST)
+        
+            if password_form.is_valid():
+                request.user.delete()
+                logout(request)
+                messages.success(request, "회원탈퇴가 완료되었습니다.")
+                return redirect('/accounts/login/')        
     else:
         password_form = CheckPasswordForm(request.user)
 
