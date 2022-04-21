@@ -50,3 +50,4 @@ def pointUp(request):
     user.save()
 
     return redirect("/")
+
