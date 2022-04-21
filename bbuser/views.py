@@ -19,10 +19,9 @@ class TestView(TemplateView):
 def RegisterProfileView(request):
     if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES)
+        User = get_user_model()
+        user = get_object_or_404(User, username=request.user)
         if form.is_valid():
-            User = get_user_model()
-            user = get_object_or_404(User, username=request.user)
-
             print(request.user)
             if user.profile_img:
                 user.profile_img.delete()
@@ -31,11 +30,16 @@ def RegisterProfileView(request):
             user.last_name = form.cleaned_data["last_name"]
             user.save()
             return redirect("/")
-    else:
-        form = ProfileForm()
-        User = get_user_model()
-        user = get_object_or_404(User, username=request.user)
-
+        else:
+            return render(
+                request,
+                "user/register_profile.html",
+                {"form": form, "user": user},
+            )
+    form = ProfileForm()
+    User = get_user_model()
+    user = get_object_or_404(User, username=request.user)
+    print(user)
     return render(request, "user/register_profile.html", {"form": form, "user": user})
 
 

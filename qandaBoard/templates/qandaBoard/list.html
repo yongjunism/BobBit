@@ -130,7 +130,7 @@
                     <tr class="text-center">
                         <th scope="col">No.</th>
                         <th scope="col">제목</th>
-                        <th scope="col">내용</th>
+                        {% comment %} <th scope="col">내용</th> {% endcomment %}
                         <th scope="col">작성일</th>
                         {% comment %} <th scope="col">수정일</th> {% endcomment %}
                         <th scope="col">작성자</th>
@@ -147,9 +147,9 @@
                                     <span>{{ board.board_title }}</span>
                                 </a>
                             </td>
-                            <td>
+                            {% comment %} <td>
                                 <span>{{ board.board_content }}</span>
-                            </td>
+                            </td> {% endcomment %}
                             <td>
                                 <span>{{ board.board_reg_date | date:"Y-m-d h:i" }}</span>
                             </td>
