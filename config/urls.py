@@ -24,8 +24,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("", HomeView.as_view(), name="home"),
     path("user/", include("bbuser.urls")),
-    path("price/", include("pricePredict.urls"), name="price"),
-    path("mypage/", include("mypage.urls")),
-    path("", include("qandaBoard.urls")),
+    path("price/", include("pricePredict.urls"), name='price'),
+    path('mypage/', include('mypage.urls')),
+    path('', include('qandaBoard.urls')),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
