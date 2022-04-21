@@ -10,8 +10,8 @@ from django.forms.models import model_to_dict
 #     template_name = "home.html"
 
 def HomeView(request):
-    s_list = Product.objects.all().values_list('pName')
+    s_list = Product.objects.values()
     search_list = []
     for search_item in range (len(s_list)):
-        search_list.append(Product.objects.all().values_list('pName')[search_item])
+        search_list.append(s_list[search_item]['pName'])
     return render(request,'home.html',{'search_list': search_list})
