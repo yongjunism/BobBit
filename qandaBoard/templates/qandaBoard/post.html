@@ -12,7 +12,6 @@
     
     th{width:100px;text-align: center !important; background-color:#d9e6e9;}
     th, tr{padding:12px !important; vertical-align:middle !important;font-size: 1.6rem;}
-    header{width:100% !important;}
   </style>
   <link href="{% static 'css/base.css' %}" rel="stylesheet">
   <link href="{% static 'css/icon/iconfont432b.css' %}" rel="stylesheet">
@@ -127,41 +126,31 @@
                 {% endif %}
             </div>
             <!-- 로그인 끝 -->
-        </div>
-        {% comment %} <!-- 게시판 글쓰기 -->
-        <form action="{% url 'qandaBoard:post' %}" method="post" enctype="multipart/form-data" style="margin-left:500px;margin-top:100px;">
-            {% csrf_token %}
-            <!-- 제목 -->
-            <div class="form-group row">
-                <label for="inputTitle" class="col-sm-2 col-form-label" style = "width:200px;"><strong>제목</strong></label>
-                <div>
-                    <input type="text" name="board_title" class="form-control" id="inputTitle" value ='{{board.board_title}}' style='border:1px solid black;'>
-                </div>
-            </div>
-            <!-- 내용 -->
-            <div class="form-group row" style="margin-top:20px;">
-                <label for="inputContent" class="col-sm-2 col-form-label" style = "width:200px;"><strong>질문</strong></label>
-                <div>
-                    <textarea type="text" name="board_content" class="form-control" id="inputContent" rows="10" cols="100"></textarea>
-                </div>
-            </div> {% endcomment %}
+            <form action="{% url 'qandaBoard:post' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
             <table class="table table-striped table-bordered" style="width:700px; margin-top:150px;margin-left: auto; margin-right: auto;">
-            <tr>
-                <th>제목</th>
-                <td><input type="text" name="board_title" class="form-control" id="inputTitle" value ='{{board.board_title}}' style='border:1px solid black;'></td>
-            </tr>
-            <tr>
-                <th>내용</th>
-                <td><textarea type="text" name="board_content" class="form-control" id="inputContent" rows="10" cols="100"></textarea></td>
-            </tr>
-        </table>
+                <tr>
+                    <th>제목</th>
+                    <td><input type="text" name="board_title" class="form-control" id="inputTitle" value ='{{board.board_title}}' style='border:1px solid black;'></td>
+                </tr>
+                <tr>
+                    <th>내용</th>
+                    <td><textarea type="text" name="board_content" class="form-control" id="inputContent" rows="10" cols="100"></textarea></td>
+                </tr>
+            </table>
             
             <br>
             <input type='hidden' value='{{board.board_id}}' name = 'board_id'/>
             <!-- 등록 버튼 -->
-            <div style='width:125px;margin:0 auto;'>
-            <input type="submit" style="border-radius:80px;width:120px; border:0;background-color:#d9e6e9;padding:10px;color:black;font-size:15px;" role="button" value="  등록  ">  
+            {% comment %} <div style='width:125px;margin:0 auto;'>
+                <input type="submit" style="z-index:10 !important;border-radius:80px;width:120px; border:0;background-color:#d9e6e9;padding:10px;color:black;font-size:15px;" role="button" value="  등록  ">  
+            </div> {% endcomment %}
+            {% comment %} <input type="submit" style="border:0;background-color:#d9e6e9;padding:10px;color:black;" role="button" value="등록"> {% endcomment %}
+            <div style="margin:0 auto; width:125px;">
+                <input type="submit" style="border-radius:80px;width:120px; border:0;background-color:#d9e6e9;padding:10px;color:black;font-size:15px;" role="button" value="  등록  ">  
             </div>
-</body>
+        </form>    
+        </div>   
+    </body>
 </html>
