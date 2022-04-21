@@ -7,7 +7,10 @@
   <style>
     span{color:black}
     a{text-decoration: none !important;}
-    body{font-family: 'Noto Sans KR', sans-serif !important;}
+    body{font-family: 'Noto Sans KR', sans-serif !important; }
+    th{width:100px;text-align: center !important; background-color:#d9e6e9;}
+    th, tr{padding:12px !important; vertical-align:middle !important;font-size: 1.6rem;}
+    header{width:100% !important;}
   </style>
   <link href="{% static 'css/base.css' %}" rel="stylesheet">
   <link href="{% static 'css/icon/iconfont432b.css' %}" rel="stylesheet">
@@ -100,15 +103,35 @@
 
             <!-- 로그인 시작 -->
             <div class="header-user">
-                <a href="https://user.mockplus.com/signin?next=http%3A%2F%2Fwww.mockplus.com%2F&amp;source=" class="login" rel="nofollow">로그인 </a>
-                <a href="https://user.mockplus.com/signup?next=http%3A%2F%2Fwww.mockplus.com%2F&amp;source=" class="user-btn" rel="nofollow">회원가입</a>
+                {% if user.is_authenticated %}
+                    <div class="header-user-profile">
+                        <p class='header-user-profile-text'>Point : {{ user.point }}</p>
+                        <div class="base_profile_img_container">
+                            {% if user.profile_img %}
+                            <img class='base_profile_img' src="/media/{{ user.profile_img }}">
+                            {% else %}
+                            <img class='base_profile_img' src="/media/profile/default.png">
+                            {% endif %}
+                        </div>
+                        <p class='header-user-profile-text'>{{ user.username }}</p>
+                    </div>
+                    <form class="header_profile_logout" method="post" action="{% url 'account_logout' %}">
+                    {% csrf_token %}
+                    <button class="user-btn" type="submit" style="cursor:pointer">로그아웃</button>
+                    </form>
+                {% else %}
+                    <a href="/accounts/login" class="login" rel="nofollow">로그인 </a>
+                    <a href="/accounts/signup" class="user-btn" rel="nofollow">회원가입</a>
+                {% endif %}
             </div>
             <!-- 로그인 끝 -->
         </div>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-        <table class="table table-striped table-bordered" style="width:1000px; margin-top:150px; margin-left:350px;">
+        <table class="table table-striped table-bordered" style="width:700px; margin-top:150px;margin-left: auto;
+        margin-right: auto;">
+        {% comment %} <table class="table table-striped table-bordered" style="width:700px; margin-top:150px; margin-left:500px;"> {% endcomment %}
             <tr>
-                <th>번호</th>
+                <th>No.</th>
                 <td>{{ board.board_id }}</td>
             </tr>
             <tr>
@@ -128,7 +151,6 @@
                 <td>{{ board.board_reg_date |date:"Y.m.d H:i" }}</td>
             </tr>
         </table>
-         
         </div>
         <script src="{% static 'jquery/js/jquery-3.5.1.min.js' %}"></script>
         <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
