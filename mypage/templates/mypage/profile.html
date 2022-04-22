@@ -35,9 +35,9 @@
     <section class="main">
       <div class="base_profile_img_container">
         {% if user.profile_img %}
-        <img class='base_profile_img' src="/media/{{ user.profile_img }}" width="80rem" style="border-radius: 50%;" alt="Profile_img">
+        <img class='base_profile_img' src="/media/{{ user.profile_img }}" width="80rem" height="80rem" style="border-radius: 50%;" alt="Profile_img">
         {% else %}
-        <img class='base_profile_img' src="/media/profile/default.png" width="80rem" style="border-radius: 50%;" alt="Profile_img">
+        <img class='base_profile_img' src="/media/profile/default.png" width="80rem" height="80rem" style="border-radius: 50%;" alt="Profile_img">
         {% endif %}{{ user.username }}님
     </div>
             <div class="buttons"> 
