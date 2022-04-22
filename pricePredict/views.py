@@ -11,6 +11,8 @@ from .categori_to_emoji import EMOJI
 def priceViewbyParam(request, product_id):
     # 오늘 날짜
     today = date.today()
+    lastmonth = today.month
+
 
     product = Product.objects.get(pNo=product_id)
     product_dict = model_to_dict(product)
@@ -23,7 +25,8 @@ def priceViewbyParam(request, product_id):
     for item in categori_list:
         pd_list.append({
             'pName': model_to_dict(item)['pName'],
-            'pNo': model_to_dict(item)['pNo']
+            'pNo': model_to_dict(item)['pNo'],
+            'price': model_to_dict(item)['price']
         })
 
     print(product_dict['cKey'])
@@ -32,6 +35,6 @@ def priceViewbyParam(request, product_id):
             request, 'pricePredict/price_page.html',
             {'today': today,
              'pd_list': pd_list,
-             'icon': EMOJI[cNo],
-             'product_info': product_info}
-        )
+             'product_info': product_info,
+             'lastmonth': lastmonth,
+             'icon': EMOJI[cNo]}
