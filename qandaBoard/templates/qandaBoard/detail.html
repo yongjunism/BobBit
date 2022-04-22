@@ -1,4 +1,3 @@
-<!-- base.html 적용하기 -->
 {% extends 'base/base.html' %}
 <html lang="ko">
 {% load static %}
@@ -22,7 +21,7 @@
 {% endblock head %}
 
 {% block contents %}
-<table class="table table-striped table-bordered" style="width:700px; margin-top:150px;margin-left: auto; margin-right: auto;">
+<table class="table table-striped table-bordered" style="width:700px; margin-top:230px;margin-left: auto; margin-right: auto;">
     <tr>
         <th>No.</th>
         <td>{{ board.board_id }}</td>
@@ -37,6 +36,7 @@
     </tr>
     <tr>
         <th>작성자</th>
+        <td>{{ }}</td>
     </tr>
     <tr>
         <th>작성일</th>
