@@ -16,7 +16,7 @@
 <body class="home">
     <header class="header-of-page">
         <div class="header-content black-bg">
-            <a href="./" class="logo">
+            <a href="../../" class="logo">
                 🍚 밥비트
             </a>
             <div class="nav-menu">
@@ -102,6 +102,7 @@
                     </div>
                     <form class="header_profile_logout" method="post" action="{% url 'account_logout' %}">
                     {% csrf_token %}
+                    <a href="/mypage/profile" class="user-btn" rel="nofollow">마이페이지</a>
                     <button class="user-btn" type="submit" style="cursor:pointer">로그아웃</button>
                     </form>
                 {% else %}

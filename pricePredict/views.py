@@ -13,6 +13,7 @@ import joblib
 def priceViewbyParam(request, product_id):
     # 오늘 날짜
     today = date.today()
+    lastmonth = today.month
 
     product = Product.objects.get(pNo=product_id)
     product_dict = model_to_dict(product)
@@ -49,7 +50,8 @@ def priceViewbyParam(request, product_id):
     for item in categori_list:
         pd_list.append({
             'pName': model_to_dict(item)['pName'],
-            'pNo': model_to_dict(item)['pNo']
+            'pNo': model_to_dict(item)['pNo'],
+            'price': model_to_dict(item)['price']
         })
 
     if request.method == 'GET':
@@ -57,6 +59,7 @@ def priceViewbyParam(request, product_id):
             request, 'pricePredict/price_page.html',
             {'today': today,  # 오늘 날짜
              'pd_list': pd_list,
+             'lastmonth': lastmonth,
              'icon': EMOJI[cNo],
              'product_info': product_info,  # 해당 상품의 db 데이터
              'pd_data': pd_data,        # 해당 상품의 지금까지 csv데이터

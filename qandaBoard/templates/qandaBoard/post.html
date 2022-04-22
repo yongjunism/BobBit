@@ -1,179 +1,39 @@
-{% comment %} {% extends 'base/base.html' %}
-{% load static %}
-{% block contents %}
-<div class="banner-inner">
-    <div class ="banner-cover" style='background-color:white;'>
-        <!DOCTYPE html>
-        <html lang="ko">
-            <head>
-                <meta charset="utf-8" />
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="description" content="" />
-                <meta name="author" content="" />
-                <style>
-        
-                </style>
-                <title>질문등록</title>
-            </head>
-
-            <body>
-                <!-- 게시판 글쓰기 -->
-                <form action="{% url 'qandaBoard:post' %}" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                <!-- 제목 -->
-                <div class="form-group row">
-                    <label for="inputTitle" class="col-sm-2 col-form-label"><strong>제목</strong></label>
-                    <div class="col-sm-10">
-                        <input type="text" name="board_title" class="form-control" id="inputTitle" value ='{{board.board_title}}'>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="inputTcContent" class="col-sm-2 col-form-label"><strong>글작성</strong></label>
-                    <div>
-                        <input type="text" name="board_content">
-                    </div>
-                </div>
-
-                <br>
-                <input type='hidden' value='{{board.board_id}}' name = 'board_id'/>
-                <input class="btn btn-primary" type="submit" style = "float:right;" role="button" value="글쓰기">  
-                </form>    
-            </body>
-        </html>
-    </div>
-</div>
-{% endblock contents %} {% endcomment %}
-
-<!DOCTYPE html>
-{% load static %}
+{% extends 'base/base.html' %}
 <html lang="ko">
-<head>
-  <title>질문게시판</title>
-  <meta charset="utf-8" />
-  <style>
-    span{color:black}
-    a{text-decoration: none !important;}
-    body{font-family: 'Noto Sans KR', sans-serif !important;}
-  </style>
-  <link href="{% static 'css/base.css' %}" rel="stylesheet">
-  <link href="{% static 'css/icon/iconfont432b.css' %}" rel="stylesheet">
-  <script src="{% static 'js/lib/jquery.min.js' %}"></script>
-  <!-- GoogleFonts-->
-  <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Cabin+Sketch&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-  {% block head %}
-  {% endblock head %}
-</head>
+{% load static %}
 
-<body class="home">
-    <header class="header-of-page" style="height:80px;">
-        <div class="header-content black-bg">
-            <a href="./" class="logo">
-                🍚 밥비트
-            </a>
-            <!-- nav시작 -->
-            <div class="nav-menu">
-                <div class="nav-item">
-                    <span>예측관계</span>
-                </div>
-                <div class="nav-item">
-                    <span>물가정보<i class="iconfont icon_broad_back"></i></span>
-                    <div class="nav-menu-drop">
-                        <ul class="download-nav">
-                            <li>
-                                <h3>품목</h3>
-                                <div class="download-box idoc-box">
-                                    <a href="https://help.mockplus.com/p/249" target="_blank">
-                                        <i class="iconfont">🐔</i>
-                                        <p>닭고기</p>
-                                        <span>닭 사료에 해당하는 곡물 지표에 따른 닭고기의 가격을 확인할 수 있습니다.</span>
-                                    </a>
-                                    <a href="https://help.mockplus.com/p/498" target="_blank">
-                                        <i class="iconfont">🐷</i>
-                                        <p>돼지고기</p>
-                                        <span>돼지 사료에 해당하는 곡물 지표에 따른 돼지고기의 가격을 확인할 수 있습니다.</span>
-                                    </a>
-                                    <a href="https://help.mockplus.com/p/323" target="_blank">
-                                        <i class="iconfont">🐮</i>
-                                        <p>소고기</p>
-                                        <span>소 사료에 해당하는 곡물 지표에 따른 소고기의 가격을 확인할 수 있습니다.</span>
-                                    </a>
-                                    <a href="https://help.mockplus.com/p/250" target="_blank">
-                                        <i class="iconfont">🥚</i>
-                                        <p>계란</p>
-                                        <span>계란은 닭고기의 지표와 닭 평균가의 지표가 더해져 가격이 계산됩니다.</span>
-                                    </a>
-                                    <a href="https://help.mockplus.com/p/251" target="_blank">
-                                        <i class="iconfont">🍜</i>
-                                        <p>라면</p>
-                                        <span>밀 가격에 따른 라면이 가격을 확인할 수 있습니다.</span>
-                                    </a>
-                                    <a href="https://help.mockplus.com/p/507#1" target="_blank">
-                                        <i class="iconfont">☕</i>
-                                        <p>커피</p>
-                                        <span>설탕 및 카카오의 가격에 따른 커피 가격을 확인할 수 있습니다.</span>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="mockplus-download-li">
-                                <h3>Mockplus Classic <span class="edition">(Desktop prototyping tool)</span></h3>
-                                <div class="download-box">
-                                    <a href="download/mockplus-classic.html" target="_blank">
-                                        <i class="iconfont icon_list_pc"></i>
-                                        <p>Mockplus for Windows/Mac</p>
-                                        <span>Prototype faster, smarter and easier</span>
-                                    </a>
-                                    <a href="download/mockplus-rp-app.html" target="_blank">
-                                        <i class="iconfont icon_list_app"></i>
-                                        <p>Mockplus for iOS/Android</p>
-                                        <span>Test app prototypes on real devices</span>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                
-                <div class="nav-item">
-                    <a href="./rank">랭킹</a>
-                </div>
+{% block head %}
+    <title>질문게시판</title>
+    <meta charset="utf-8" />
+    <style>
+        span{color:black}
+        a{text-decoration: none !important;}
+        body{font-family: 'Noto Sans KR', sans-serif !important;}
+        th{width:100px;text-align: center !important; background-color:#d9e6e9;}
+        th, tr{padding:12px !important; vertical-align:middle !important;font-size: 1.6rem;}
+        .header-of-page {height:80px;}
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+{% endblock head %}
 
-                <div class="nav-item">
-                    <a href="./qna">QnA</a>
-                </div>
-
-            </div>
-            <!-- nav 끝 -->
-
-            <!-- 로그인 시작 -->
-            <div class="header-user">
-                <a href="https://user.mockplus.com/signin?next=http%3A%2F%2Fwww.mockplus.com%2F&amp;source=" class="login" rel="nofollow">로그인 </a>
-                <a href="https://user.mockplus.com/signup?next=http%3A%2F%2Fwww.mockplus.com%2F&amp;source=" class="user-btn" rel="nofollow">회원가입</a>
-            </div>
-            <!-- 로그인 끝 -->
+{% block contents %}
+    <form action="{% url 'qandaBoard:post' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        <table class="table table-striped table-bordered" style="width:700px; margin-top:150px;margin-left: auto; margin-right: auto;">
+            <tr>
+                <th>제목</th>
+                <td><input type="text" name="board_title" class="form-control" id="inputTitle" value ='{{board.board_title}}' style='border:1px solid black;'></td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td><textarea type="text" name="board_content" class="form-control" id="inputContent" rows="10" cols="100"></textarea></td>
+            </tr>
+        </table>
+        
+        <br>
+        <input type='hidden' value='{{board.board_id}}' name = 'board_id'/>
+        <div style="margin:0 auto; width:125px;">
+            <input type="submit" style="border-radius:80px;width:120px; border:0;background-color:#d9e6e9;padding:10px;color:black;font-size:15px;" role="button" value="  등록  ">  
         </div>
-        <!-- 게시판 글쓰기 -->
-        <form action="{% url 'qandaBoard:post' %}" method="post" enctype="multipart/form-data" style="margin-left:500px;margin-top:100px;">
-            {% csrf_token %}
-            <!-- 제목 -->
-            <div class="form-group row">
-                <label for="inputTitle" class="col-sm-2 col-form-label" style = "width:200px;"><strong>제목</strong></label>
-                <div>
-                    <input type="text" name="board_title" class="form-control" id="inputTitle" value ='{{board.board_title}}' style='border:1px solid black;'>
-                </div>
-            </div>
-            <!-- 내용 -->
-            <div class="form-group row">
-                <label for="inputContent" class="col-sm-2 col-form-label" style = "width:200px;"><strong>글작성</strong></label>
-                <div>
-                    <textarea type="text" name="board_content" class="form-control" id="inputContent" rows="10" cols="100"> </textarea>
-                </div>
-            </div>
-            <!-- 등록 버튼 -->
-            <br>
-            <input type='hidden' value='{{board.board_id}}' name = 'board_id'/>
-            <input type="submit" style="border:0;background-color:#d9e6e9;padding:10px;color:black;" role="button" value="등록">  
-        </form>    
-</body>
-</html>
-
+    </form>    
+{% endblock contents %}
