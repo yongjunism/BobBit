@@ -9,36 +9,6 @@
 {% endblock head %}
 
 {% block contents %}
-<br><br><br><br>
-<!-- 헤더 부분에 가려서 임시로 끌어내려놨음  -->
-<div class ="p_Container">
-  <div class = "catagori-Nav">
-  {% for pd in pd_list %}
-  <li class="page-item">
-      {% if pd.pNo ==  product_info.pNo %}
-      <a class="select" href='../{{ pd.pNo }}'>
-          {{ pd.pName }}
-      </a>
-      {% else %}
-      <a class="non-select" href='../{{ pd.pNo }}'>
-          {{ pd.pName }}
-      </a>
-      {% endif %}
-  </li>
-  {% endfor %}
-  </div>
-  <section class = "title_section">
-      <h1>{{product_info.pName}}</h1>
-  </section>
-  <div class = "datepicker">
-      <input type="text" id="datePicker" value={{today.year}}-{{today.month}}-{{today.day}}>
-  </div>
-  <section class ="chartarea">
-      <div id="chartdiv"></div>
-  </section>
-</div>
-
-
 <div class="banner-inner" >
   <div class="predict" style="padding-left:800px; padding-top:150px">
     <h2><bold>{{product_info.pName}}</bold>의 물가는 <strong>{{lastmonth}}월 대비 XXX원(XX%)</strong> 예상됩니다.<br><br><br></h2>
@@ -66,14 +36,18 @@
         <li>
           <div>
             <label for="total">최종 가격</label>
-            <input type="text" name="total" value={{product_info.price}}*{{quantity}} style="width:100px; height:30px" readonly>원
+            <input type="text" name="total" value={{totalVal}} style="width:100px; height:30px" readonly>원
           </div>
         </li>
       </ul>
     </fieldset>
 
     <div>
-      <input type="submit" value="구매" onclick="window.open('purchase.html')">
+      {% if request.session %}
+        <input type="submit" class="purchase" value="구매" onclick="alert('구매가 완료되었습니다.')">
+      {% else %}
+        <input type="button" class="login" value="구매" onclick="windows.open('../../accounts/login')">
+      {% endif %}
     </div>
   </form>
   
@@ -85,16 +59,15 @@
     <div class="others" style="padding-left:50px">
       <p style="padding-bottom:10px">
         {% for pd in pd_list %}
-        {{pd.pName}} &nbsp;&nbsp;&nbsp;&nbsp;<u>배송비 포함</u>
+          {% if pd.pNo != product_info.pNo %}
+            {{pd.pName}} &nbsp;&nbsp;&nbsp;&nbsp;<u>배송비 포함</u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{pd.price}}원
         <input type="button" value="구매하러 가기" style="width:200px; height:30px; margin-bottom:10px" onclick="window.open('../{{ pd.pNo }}')"><br>
+          {% endif %}
         {% endfor %}
       </p>
     </div>
 
 </div>
-{% endblock contents %}
-
-{% block contents %}
     <div class ="p_Container">
         <div class = "catagori-Nav">
         {% for pd in pd_list %}
@@ -175,13 +148,13 @@
         totalVal = quantityVal * priceVal;
         quantity.value = quantityVal;
         total.value = totalVal;
-        console.log(quantityVal, totalVal, priceVal)
+        console.log(quantityVal, totalVal, priceVal);
       })
     }
       
     if(minus){
       minus.addEventListener('click', function(){
-        if (quantityVal > 1){
+        if (quantityVal >= 1){
           quantityVal--;
           totalVal = quantityVal * priceVal;
           quantity.value = quantityVal;
@@ -189,8 +162,9 @@
           console.log(quantityVal, totalVal, priceVal);
       }else{
         quantityVal = 1;
-      }
-    })
+        }
+      })
+    }
   }
-  </script>
+</script>
 {% endblock script_section %}
