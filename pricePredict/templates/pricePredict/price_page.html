@@ -102,13 +102,20 @@
                 </section>
             </div>
             <div id = "content_2">
-
+                {{next_price}}
             </div>
         </div>
     </div>
 {% endblock contents %}
 
 {% block script_section %}
+<script>
+    let xss_str = "{{pd_data}}";
+    xss_str = xss_str.replace(/&quot;/g,'"');
+    let price_data = JSON.parse(xss_str)
+    let next_price = Math.round({{next_price}})
+    let next_date = "{{today.year}}-{{today.month}}-01"
+</script>
 <script src="{% static 'js/pricePredict/amcharts.js'%}"></script>
 <script src="{% static 'js/pricePredict/bootstrap-datepicker.js'%}"></script>
 <script>
