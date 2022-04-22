@@ -49,6 +49,9 @@
                     <td>
                         <span>{{ board.board_reg_date | date:"Y-m-d h:i" }}</span>
                     </td>
+                    <td>
+                        <span>{{ board.user.username }}</span>_
+                    </td>
                 </tr> 
             {% endfor %}
         </tbody>
