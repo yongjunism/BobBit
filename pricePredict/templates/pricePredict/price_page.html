@@ -7,7 +7,67 @@
 <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 {% endblock head %}
+
 {% block contents %}
+<div class="banner-inner" >
+  <div class="predict" style="padding-left:800px; padding-top:150px">
+    <h2><bold>{{product_info.pName}}</bold>의 물가는 <strong>{{lastmonth}}월 대비 XXX원(XX%)</strong> 예상됩니다.<br><br><br></h2>
+  </div>
+  
+  <form name="form1" style="width:500px; height:100px; padding-left:800px; padding-top:0px">
+    <fieldset>
+      <legend>{{product_info.pName}}</legend>
+      <ul id="info">
+        <li>
+          <div style="padding-bottom:10px">
+            <label for="price"> 현재 가격(1개)</label>
+            <input type="text" name="price" value={{product_info.price}} style="width:100px; height:30px" readonly>원
+          </div>
+        </li>
+        <li>
+            <div style="padding-bottom:10px">
+              
+              <label for="quantity">수량</label>
+              <input type="text" name="quantity" value="1" max="" style="width:100px; height:30px">개
+              <input type="button" value=" + " name="add">
+              <input type="button" value=" - " name="minus">
+            </div>
+        </li>
+        <li>
+          <div>
+            <label for="total">최종 가격</label>
+            <input type="text" name="total" value={{totalVal}} style="width:100px; height:30px" readonly>원
+          </div>
+        </li>
+      </ul>
+    </fieldset>
+
+    <div>
+      {% if request.session %}
+        <input type="submit" class="purchase" value="구매" onclick="alert('구매가 완료되었습니다.')">
+      {% else %}
+        <input type="button" class="login" value="구매" onclick="windows.open('../../accounts/login')">
+      {% endif %}
+    </div>
+  </form>
+  
+    <br>
+    <div class="recommend" style="padding-top:100px; padding-left:50px; padding-bottom:20px">
+      <h2> 구매추천</h2>
+      <h6> 해당 가격은 coupang 랭킹 기준으로 반영됩니다.</h6>
+    </div>
+    <div class="others" style="padding-left:50px">
+      <p style="padding-bottom:10px">
+        {% for pd in pd_list %}
+          {% if pd.pNo != product_info.pNo %}
+            {{pd.pName}} &nbsp;&nbsp;&nbsp;&nbsp;<u>배송비 포함</u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{pd.price}}원
+        <input type="button" value="구매하러 가기" style="width:200px; height:30px; margin-bottom:10px" onclick="window.open('../{{ pd.pNo }}')"><br>
+          {% endif %}
+        {% endfor %}
+      </p>
+    </div>
+
+</div>
     <div class ="p_Container">
         <div class = "catagori-Nav">
         {% for pd in pd_list %}
@@ -42,12 +102,20 @@
                 </section>
             </div>
             <div id = "content_2">
-
+                {{next_price}}
             </div>
         </div>
     </div>
 {% endblock contents %}
+
 {% block script_section %}
+<script>
+    let xss_str = "{{pd_data}}";
+    xss_str = xss_str.replace(/&quot;/g,'"');
+    let price_data = JSON.parse(xss_str)
+    let next_price = Math.round({{next_price}})
+    let next_date = "{{today.year}}-{{today.month}}-01"
+</script>
 <script src="{% static 'js/pricePredict/amcharts.js'%}"></script>
 <script src="{% static 'js/pricePredict/bootstrap-datepicker.js'%}"></script>
 <script>
@@ -65,5 +133,45 @@
 
         })
 	})
+</script>
+<script type="text/javascript">
+  const formform = document.getElementsByName("form1"),
+        price = document.form1.price,
+        quantity = document.form1.quantity,
+        add = document.form1.add,
+        minus = document.form1.minus,
+        total = document.form1.total;
+    
+  if (formform){
+    total.value = price.value;
+
+    let quantityVal = quantity.value,
+        totalVal = total.value,
+        priceVal = price.value;
+
+    if(add){
+      add.addEventListener('click', function(){
+        quantityVal++;
+        totalVal = quantityVal * priceVal;
+        quantity.value = quantityVal;
+        total.value = totalVal;
+        console.log(quantityVal, totalVal, priceVal);
+      })
+    }
+      
+    if(minus){
+      minus.addEventListener('click', function(){
+        if (quantityVal >= 1){
+          quantityVal--;
+          totalVal = quantityVal * priceVal;
+          quantity.value = quantityVal;
+          total.value = totalVal;
+          console.log(quantityVal, totalVal, priceVal);
+      }else{
+        quantityVal = 1;
+        }
+      })
+    }
+  }
 </script>
 {% endblock script_section %}
