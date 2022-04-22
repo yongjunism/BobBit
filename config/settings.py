@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "chatbot",
     "bbuser",
     "mypage",
+    "rank",
 ]
 
 MIDDLEWARE = [
