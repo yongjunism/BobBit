@@ -1,12 +1,15 @@
+from re import U
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .models import *
+from django.contrib.auth.decorators import login_required
 from django.db import transaction
 from datetime import datetime
 from django.shortcuts import render, redirect
 
 #게시판 리스트
+@login_required
 def index(request):
     #페이징
     page = request.GET.get('page', '1')  # 페이지
@@ -20,17 +23,20 @@ def index(request):
 
 #질문 남기기   
 from .models import Board,User
-# @transaction.atomic
+from django.contrib.auth import get_user_model
 def post(request):
     try:
         if request.method == "POST":
             board_title = request.POST['board_title']
             board_content = request.POST['board_content']
-            # user_id=request.session.get('user_id')
-            # user = User.objects.get(pk=user_id)
+            User = get_user_model()
+            user = get_object_or_404(User, username=request.user)
             board = Board(
                 board_title=board_title, 
-                board_content=board_content, board_reg_date = datetime.now())
+                board_content=board_content, 
+                board_reg_date = datetime.now(),
+                user = user
+                )
             board.save()
             return redirect('/qna')
         else:
