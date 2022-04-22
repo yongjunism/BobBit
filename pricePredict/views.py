@@ -38,3 +38,4 @@ def priceViewbyParam(request, product_id):
              'product_info': product_info,
              'lastmonth': lastmonth,
              'icon': EMOJI[cNo]}
+        )         
