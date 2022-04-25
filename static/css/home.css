@@ -45,7 +45,7 @@
 }
 
 .line {
-    width: 60%;
+    width: 65%;
     height: 2px;
     background-color: #e7e7e7;
     border: none;
@@ -83,6 +83,10 @@ div.box {
     text-align: center;
     vertical-align: middle;
 }
+
+
+
+
 
 /*! jQuery UI - v1.13.1 - 2022-01-20
 * http://jqueryui.com
@@ -167,6 +171,7 @@ div.box {
 .ui-menu .ui-menu-item-wrapper {
 	position: relative;
 	padding: 3px 1em 3px .4em;
+    height: 27px;
 }
 
 
