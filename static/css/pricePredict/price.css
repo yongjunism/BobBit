@@ -289,10 +289,16 @@
     font-weight: 500;
 }
 
+#recommend-area .others {
+    display: flex;
+    flex-direction: column;
+}
+
 #recommend-area #product_row {
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin-bottom: 1rem;
 }
 
 #product_row p {
@@ -308,6 +314,11 @@
     text-align: right;
 }
 
+#product_row .notfree {
+    color: rgba(0, 0, 0, 0.5)
+}
+
+
 #product_row input {
     background-color: #D9E6E9;
     width: 12rem;
@@ -316,6 +327,7 @@
     cursor: pointer;
     transition: 0.1s;
     margin-left: 5rem;
+    border-radius: 5px;
 }
 
 #product_row input:hover {
