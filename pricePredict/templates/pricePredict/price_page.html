@@ -141,16 +141,18 @@
           <h2> 구매추천</h2>
           <h6 class = "sub-title"> 해당 가격은 coupang 랭킹 기준으로 반영됩니다.</h6>
           <div class="others" style="padding-left:50px">
-              {% for pd in pd_list %}
+              {% for pd in crawlingdata %}
               <div id = "product_row">
-                {% if pd.pNo != product_info.pNo %}
                   <p class = "name">{{pd.pName}}</p>
-                  <p><u>배송비 포함</u></p>
+                  {% if pd.pFree == True %}
+                  <p class = "free"><u>배송비 포함</u></p>
+                  {% else %}
+                  <p class = "notfree"><u>배송비 미포함</u></p>
+                  {% endif %}
                   <p class = "price">{{pd.price}}원</p>
-                  <input class = "button" type="button" value="구매하러 가기" onclick="window.open('../{{ pd.pNo }}')"><br>
-                {% endif %}
+                  <input class = "button" type="button" value="구매하러 가기" onclick="window.open('{{ pd.plink }}')"><br>
+                </div>
               {% endfor %}
-              </div>
           </div>
         </div>
     </div>

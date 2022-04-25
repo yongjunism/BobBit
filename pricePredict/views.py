@@ -1,13 +1,41 @@
 from operator import mod
 from django.shortcuts import render
+from sympy import product
 from .models import Product, Categori
 from django.forms.models import model_to_dict
 from datetime import date
 from .categori_to_emoji import EMOJI
 import pandas as pd
 import joblib
+import requests
+from bs4 import BeautifulSoup
 
 # Create your views here.
+
+
+def CrawlingCoupang(product_name):
+    # 쿠팡 크롤링하는 부분
+    url = f'https://www.coupang.com/np/search?component=&q=' + product_name
+    response = requests.get(url)
+    response.encoding = 'utf-8'
+    bs = BeautifulSoup(response.text, "html.parser")
+    elements = bs.select("#productList > .search-product")[:4]
+    datas = []
+
+    for element in elements:
+        if(len(element.select(".number")) == 0):
+            continue
+        free = False
+        if(element.select(".badge")[0].text != ""):
+            free = True
+        datas.append({
+            "pName": element.select(".name")[0].text,
+            "pFree": free,
+            "price": element.select(".price-value")[0].text,
+            "plink": "https://www.coupang.com" + element.select("a")[0].get("href")
+        })
+
+    return datas
 
 
 def priceViewbyParam(request, product_id):
@@ -53,8 +81,11 @@ def priceViewbyParam(request, product_id):
         pd_list.append({
             'pName': model_to_dict(item)['pName'],
             'pNo': model_to_dict(item)['pNo'],
-            'price': model_to_dict(item)['price']
+            'price': model_to_dict(item)['price'],
         })
+
+    # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ크롤링 ㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+    crawlingdata = CrawlingCoupang(product_info['pName'])
 
     if request.method == 'GET':
         return render(
@@ -62,6 +93,7 @@ def priceViewbyParam(request, product_id):
             {'today': today,  # 오늘 날짜
              'pd_list': pd_list,
              'lastmonth': lastmonth,
+             'crawlingdata': crawlingdata,
              'icon': EMOJI[cNo],
              'product_info': product_info,  # 해당 상품의 db 데이터
              'pd_data': pd_data,        # 해당 상품의 지금까지 csv데이터
