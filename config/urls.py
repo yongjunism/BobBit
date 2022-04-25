@@ -27,5 +27,6 @@ urlpatterns = [
     path("price/", include("pricePredict.urls"), name="price"),
     path("mypage/", include("mypage.urls")),
     path("", include("qandaBoard.urls")),
+    path("rank/", include("rank.urls")),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
