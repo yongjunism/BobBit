@@ -32,6 +32,9 @@ def priceViewbyParam(request, product_id):
     now_data = pd_data.drop(
         columns=['제품명', '날짜', 'next_price'], axis=1)
 
+    # 현재 가격
+    now_price = now_data['price'].array[-1]
+
     pd_data = pd_data[['날짜', 'price']]
     pd_data.rename(columns={'날짜': 'date', 'price': 'value'}, inplace=True)
     pd_data = pd_data.to_json(orient='records')
@@ -40,7 +43,6 @@ def priceViewbyParam(request, product_id):
     # 마지막 예측가
     next_price = pred[-1]
 
-    print(pd_data)
     # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
     categori_list = Product.objects.filter(cKey=cNo)
 
@@ -63,5 +65,6 @@ def priceViewbyParam(request, product_id):
              'icon': EMOJI[cNo],
              'product_info': product_info,  # 해당 상품의 db 데이터
              'pd_data': pd_data,        # 해당 상품의 지금까지 csv데이터
-             'next_price': next_price}  # 다음달 상품 가격
+             'next_price': next_price,  # 다음달 상품 가격
+             'now_price': now_price}  # 현재 상품 가격
         )

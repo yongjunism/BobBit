@@ -80,7 +80,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid rgba(0, 0, 0, 0.5);
     margin: 1rem;
 }
 
@@ -99,6 +98,227 @@
 
 #content-area #content_2 {
     flex: 1;
-    border: 1px solid rgba(0, 0, 0, 0.5);
     margin: 1rem;
+    padding: 3rem 5rem;
+}
+
+#content-area #content_2 .predict {
+    display: flex;
+    flex-direction: column;
+}
+
+#content-area #content_2 span {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.predict .pre_div {
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.predict span #p_Month {
+    position: relative;
+    top: -10px;
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 500;
+}
+
+.predict #p_Name {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Down Box */
+.predict #down_Box {
+    position: relative;
+    top: -10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem;
+}
+
+.predict #down_Box h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #9E4747;
+}
+
+.predict #down_Box .icon {
+    margin: 0;
+    line-height: 4rem;
+    color: #9E4747;
+}
+
+.predict #down_Box p {
+    margin: 0;
+    margin: 1.5rem 0 0 0.5rem;
+}
+
+/* Up Box */
+
+.predict #up_Box {
+    position: relative;
+    top: -10px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem;
+}
+
+.predict #up_Box h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 500;
+    color: #929CE6;
+}
+
+.predict #up_Box .icon {
+    margin: 0;
+    line-height: 4rem;
+    color: #929CE6;
+}
+
+.predict #up_Box p {
+    margin: 0;
+    margin: 1.5rem 0 0 0.5rem;
+}
+
+#info .box {
+    height: 2.2rem;
+    width: 20rem;
+    padding: 2.5px 10px;
+    margin: 0 0 10px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+#info #quantity_box {
+    background-color: #EEEEEE;
+}
+
+#info #buy_box {
+    cursor: pointer;
+    color: white;
+    background-color: #1B555B;
+    border: none;
+}
+
+#info .box div {
+    font-size: 0.8rem;
+}
+
+#info .box .button-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#info .box input {
+    text-align: right;
+
+}
+
+#info #now_price input {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+#info #quantity_box input {
+    background-color: #EEEEEE;
+}
+
+#info #quantity_box label {
+    color: #808080;
+    font-weight: 400;
+}
+
+#info #quantity_box #text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+#info #quantity_box #button {
+    background-color: white;
+    margin: 0 1px;
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: 0.1s;
+}
+
+#info #quantity_box #button:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#info #buy_box input {
+    background-color: #1B555B;
+    cursor: pointer;
+}
+
+#info #buy_box label {
+    color: white;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+#info #buy_box #text {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+#recommend-area {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    margin-bottom: 30rem;
+}
+
+#recommend-area .sub-title {
+    padding: 0;
+    margin: 1rem 0;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 500;
+}
+
+#recommend-area #product_row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#product_row p {
+    margin: 0 2rem;
+}
+
+#product_row .name {
+    width: 20rem;
+}
+
+#product_row .price {
+    width: 8rem;
+    text-align: right;
+}
+
+#product_row input {
+    background-color: #D9E6E9;
+    width: 12rem;
+    height: 2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.1s;
+    margin-left: 5rem;
+}
+
+#product_row input:hover {
+    background-color: #516b70;
+    color: white;
 }
