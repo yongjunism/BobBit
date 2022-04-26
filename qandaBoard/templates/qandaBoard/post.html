@@ -1,5 +1,3 @@
-
-<!-- base.html 적용하기 -->
 {% extends 'base/base.html' %}
 <html lang="ko">
 {% load static %}
@@ -19,7 +17,7 @@
 {% endblock head %}
 
 {% block contents %}
-    <form action="{% url 'qandaBoard:post' %}" method="post" enctype="multipart/form-data">
+    <form action="{% url 'qandaBoard:post' %}" method="post" enctype="multipart/form-data" style="margin-top:230px;">
     {% csrf_token %}
         <table class="table table-striped table-bordered" style="width:700px; margin-top:150px;margin-left: auto; margin-right: auto;">
             <tr>
