@@ -20,6 +20,20 @@
     <script src="{% static 'jquery/js/jquery-3.5.1.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script>
+        function deleteSubmit(board_YN, id, owner_id){
+            if( confirm('정말 삭제하시겠습니까?')){
+                if(owner_id == {{user.id}} ){
+                    let form = document.querySelector('form[id=deleteForm]');
+                    document.querySelector('#deleteForm input[name=delete_YN]').value = board_YN;
+                    document.querySelector('#deleteForm input[name=id]').value = id;
+                    document.querySelector('#deleteForm input[name=board_id]').value = {{board.board_id}};
+                    form.submit();
+                }
+                else{
+                    alert('본인이 작성한 글만 삭제 가능 합니다.');
+                }
+            }
+        }
         function replySubmit(){
             if(window.event.keyCode == 13){
                 document.querySelector('#replyForm input[name=board_id]').value = {{ board.board_id }};
@@ -38,7 +52,13 @@
 {% endblock head %}
 
 {% block contents %}
-<table class="table table-striped table-bordered" style="width:700px; margin-top:230px;margin-left: auto; margin-right: auto;">
+<div style="width:700px;margin-left: auto; margin-right: auto;margin-top:150px;">
+    <span onclick='deleteSubmit("Y", {{board.board_id}}, {{board.user.id}})'>
+        <button type="submit" style="margin-left:580px;border-radius:80px;width:120px; border:0;background-color:#d9e6e9;padding:10px;color:black;font-size:15px;">삭제</button>
+    </span>
+</div>
+
+<table class="table table-striped table-bordered" style="margin-top:20px; width:700px; margin-left: auto; margin-right: auto;">
     <tr>
         <th>No.</th>
         <td>{{ board.board_id }}</td>
@@ -74,7 +94,6 @@
     {%endfor%}
 </table>
 
-
 <!-- 댓글 달기 -->
 <div class='reply_write'>
 <form method="post" id='replyForm' onSubmit="return false;">
@@ -83,7 +102,14 @@
     {{formreply.user_id.as_hidden}}
     <textarea type="text" name="reply_content" maxlength="1500" required id="id_reply_content" rows="3" cols="96"  placeholder="댓글을 입력하세요"></textarea>
 </form>
-<button onclick='replySubmit(true)'>등록</button>
-
+<button onclick='replySubmit(true)' style="margin-top: 20px;margin-left:580px;border-radius:80px;width:120px; border:0;background-color:#d9e6e9;padding:10px;color:black;font-size:15px;">등록</button>
 </div>
+
+<form method="post" id='deleteForm'>
+    {% csrf_token %}
+    {{formdelete.delete_YN.as_hidden}}
+    {{formdelete.id.as_hidden}}
+    {{formdelete.board_id.as_hidden}}
+</form>
+
 {% endblock contents %}

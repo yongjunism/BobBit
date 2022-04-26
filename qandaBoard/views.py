@@ -60,16 +60,28 @@ def detail(request, post_id):
                 return redirect('/detail/'+form.data['board_id'])
             else:
                 return redirect('/detail/'+form.data['board_id'])
+        else:
+            form = DeleteBoardForm(request.POST)
+            b_id = form.data['id']
+            if form.data['delete_YN'] == 'Y':
+                b = Board.objects.get(board_id = b_id)
+                b.board_deleted = 'Y'
+                b.save()
+                return redirect('/qna')
     try:
         board = Board.objects.get(pk=post_id)
     except:
         return HttpResponseNotFound(content='404 NOT FOUND')
+    if board.board_deleted == 'Y':
+        return HttpResponseNotFound(content='404 NOT FOUND')
     replys = Reply.objects.filter(reply_deleted='N',board_id=board.board_id)
     formreply = ReplyForm()
+    formdelete = DeleteBoardForm()
+    # user = User.objects.get(id = board.user.id)
     User = get_user_model()
     user = get_object_or_404(User, username=request.user)
     board.save()
     print(request.GET.get)
     return render(request, 'qandaBoard/detail.html',
-    {'board':board, 'replys':replys,'user' : user,'formreply':formreply })
+    {'board':board, 'replys':replys,'user':user,'formdelete':formdelete, 'formreply':formreply })
 
