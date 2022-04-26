@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.fields import CharField, IntegerField, FloatField, DateField
 # Create your models here.
-
+from django.conf import settings
 
 class Categori(models.Model):
     cKey = IntegerField(primary_key=True)
@@ -22,6 +22,14 @@ class Product(models.Model):
     pImage = CharField(max_length=255, null=True)
     cKey = models.ForeignKey(
         Categori, on_delete=models.CASCADE, db_column='cKey', null=True)
+    
+    wish_user = models.ManyToManyField(
+        settings.AUTH_USER_MODEL,
+        blank=True,
+        related_name='wish_user'
+    )
+    def count_wish_user(self):
+        return self.wish_user.count()
 
     class Meta:
         db_table = 'Product'

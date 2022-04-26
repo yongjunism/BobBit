@@ -2,7 +2,6 @@
 {% load static %}
 {% block head %}
 <link href="{% static 'css/home.css' %}" rel="stylesheet">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
 <script>
@@ -12,7 +11,7 @@
             '진라면','닭고기',
             '돼지고기(등심)','돼지고기(안심)',
             '소고기','계란 30구',
-            '[동서식품] 맥심 모카골드 믹스'
+            '[동서식품]맥심 모카골드 믹스'
         ]
 		$("#value").autocomplete({  
 			source : price_list,	
@@ -46,7 +45,8 @@
                     id = 'value'
                     placeholder="궁금한 제품을 검색하세요."
                     onfocus="this.placeholder=''" 
-                    onKeypress="javascript:if(event.keyCode==13){search()}">
+                    onKeypress="javascript:if(event.keyCode==13){search()}"
+                    spellcheck="false">
             <button class = "search_button" type="button" style = 'background-color:transparent;' onclick='search()'>
                 <img class ='search_img' src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
             </button>
