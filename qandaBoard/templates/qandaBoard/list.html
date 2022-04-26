@@ -42,8 +42,12 @@
                         <span>{{ board.board_id }}</span>
                     </th>
                     <td>
-                        <a href="/post/{{ board.board_id }}">
-                            <span>{{ board.board_title }}</span>
+                        <a href="/detail/{{ board.board_id }}">
+                            <span>{{ board.board_title }}
+                                {% if board.reply_board_relations.count %}
+                                    <span>[{{ board.reply_board_relations.count }}]</span>
+                                {% endif %}
+                            </span>
                         </a>
                     </td>
                     <td>
