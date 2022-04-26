@@ -11,7 +11,11 @@ import requests
 from bs4 import BeautifulSoup
 
 # Create your views here.
-
+import json
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 
 def CrawlingCoupang(product_name):
     # 쿠팡 크롤링하는 부분
@@ -77,6 +81,7 @@ def priceViewbyParam(request, product_id):
     pd_list = []
     product_info = product_dict
 
+
     for item in categori_list:
         pd_list.append({
             'pName': model_to_dict(item)['pName'],
@@ -98,5 +103,25 @@ def priceViewbyParam(request, product_id):
              'product_info': product_info,  # 해당 상품의 db 데이터
              'pd_data': pd_data,        # 해당 상품의 지금까지 csv데이터
              'next_price': next_price,  # 다음달 상품 가격
-             'now_price': now_price}  # 현재 상품 가격
+             'now_price': now_price,
+             'wish_count': model_to_dict(item)['wish_user'].count_wish_user()}  # 현재 상품 가격
         )
+
+@login_required
+@require_POST
+
+def product_wish(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    user = request.user
+    message = None
+
+    
+    if product.wish_user.filter(id=user.id).exists():
+        product.wish_user.remove(user)
+        message = '좋아요 취소'
+    else:
+        product.wish_user.add(request.user)
+        message = '좋아요'
+
+    context = {'wish_count': product.count_wish_user(), 'message': message}
+    return HttpResponse(json.dumps(context), content_type="application/json")
