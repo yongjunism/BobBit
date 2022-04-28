@@ -1,6 +1,7 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block head %}
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 <link href="{% static 'css/pricePredict/price.css' %}" rel="stylesheet">
 <link href="{% static 'css/pricePredict/bootstrap-datepicker.css' %}" rel="stylesheet">
 <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
@@ -44,7 +45,19 @@
             </div>
             <div id = "content_2">
                 <div class="predict">
-                    <span class = "pre_div" id = "p_Name">{{product_info.pName}}</span>
+                    <span class = "pre_div name_section" id = "p_Name">
+                        <p>{{product_info.pName}}</p>
+                        <div class = "heart_section">
+                          {% if isLike %}
+                          <div class="wish heart"> </div>
+                          {% else %}
+                          <div class="wish cleanheart"> </div>
+                          {% endif %}
+                          <p id="count">
+                              {{ wish_count }}
+                          </p>
+                        </div>
+                    </span>
                     <span class = "pre_div">
                         <h1 id ="p_Month">{{lastmonth}}</h1>
                         <p>월 대비</p>
@@ -100,7 +113,7 @@
                                   <div class = "box" id = "now_price">
                                     <label for="price"> 현재 가격(1개)</label>
                                     <div>
-                                    <input type="text" name="price" value={{product_info.price}} style="width:100px; height:30px" readonly>원
+                                    <input type="text" name="price" value={{now_price}} style="width:100px; height:30px" readonly>원
                                     </div>
                                   </div>
                                 </li>
@@ -115,21 +128,19 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <div class = "box" id = "buy_box" onclick="alert('구매가 완료되었습니다.')">
+                                  {% if user.is_authenticated %}
+                                    <div class = "box" id = "buy_box" data-toggle="modal" data-target="#exampleModalCenter">
+                                  {% else %}    
+                                    <div class = "box" id = "buy_box">
+                                  {% endif %} 
                                         <label for="total">구매</label>
                                         <div class = "button-box">
-                                        <input id = "text" type="text" name="total" value={{totalVal}} style="width:100px; height:30px" readonly>p
+                                        <input id = "text" type="text" name="total" value="{{totalVal}}" style="width:100px; height:30px" readonly>p
                                         </div>
-                                      </div>
-                                      <div>
-                                        <input type="button" class="btn btn-info btn-sm wish" name="{{ product.pNo }}" value="Wish"
-                                            style="margin-top: 7px" onclik>
-                                        <p id="count" style="font:bold 1em; margin-top: 3px">
-                                            좋아요&nbsp;{{ product.wish_user.all.count }}개</p>
-                                      </div>
+                                    </div>
                                 </li>
                               </ul>
-                        
+                              <!-- Modal -->
                             {% comment %} <div>
                               {% if request.session %}
                                 <input type="submit" class="purchase" value="구매" onclick="alert('구매가 완료되었습니다.')">
@@ -162,9 +173,51 @@
           </div>
         </div>
     </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">구매</h5>
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <table class = "price-table">
+              <colgroup>
+                <col width = "50%">
+                <col width = "50%">
+              </colgroup>
+              <tbody>
+                <tr>
+                  <th>보유 포인트</th>
+                  <td id = "now_p">{{ user.point }}</td>
+                </tr>
+                <tr class ="deduct">
+                  <th>차감 포인트</th>
+                  <td id = "deduct_p">{{ now_price }}</td>
+                </tr>
+                <tr class ="residual">
+                  <th>잔여 포인트</th>
+                  <td id = "remain_p">0</td>
+                </tr>
+              </tbody>
+            </table>
+            구매할까요?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>
+            <button type="button" id = "buynow" class="btn btn-primary">구매하기</button>
+          </div>
+        </div>
+      </div>
 {% endblock contents %}
 
 {% block script_section %}
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+{% comment %} <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script> {% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     let xss_str = "{{pd_data}}";
     xss_str = xss_str.replace(/&quot;/g,'"');
@@ -191,19 +244,31 @@
 	})
 </script>
 <script type="text/javascript">
+  const now_point = document.getElementById("now_p");
+  const deduct_price = document.getElementById("deduct_p");
+  const remain_price = document.getElementById("remain_p");
   const formform = document.getElementsByName("form1"),
         price = document.form1.price,
         quantity = document.form1.quantity,
         add = document.form1.add,
         minus = document.form1.minus,
         total = document.form1.total;
-    
+
+  let quantityVal;
+  let totalVal;
+  let priceVal;
+  remain_price.innerHTML = now_point.innerHTML - deduct_price.innerHTML;
+
+  if(remain_price.innerHTML < 0){
+    remain_price.style.color = 'red';
+  }
+
   if (formform){
     total.value = price.value;
 
-    let quantityVal = quantity.value,
-        totalVal = total.value,
-        priceVal = price.value;
+    quantityVal = quantity.value;
+    totalVal = total.value;
+    priceVal = price.value;
 
     if(add){
       add.addEventListener('click', function(){
@@ -211,18 +276,30 @@
         totalVal = quantityVal * priceVal;
         quantity.value = quantityVal;
         total.value = totalVal;
-        console.log(quantityVal, totalVal, priceVal);
+        deduct_price.innerHTML  = totalVal;
+        remain_price.innerHTML = now_point.innerHTML - totalVal;
+        if(remain_price.innerHTML < 0){
+          remain_price.style.color = 'red';
+        }else{
+          remain_price.style.color = 'black';
+        }
       })
     }
       
     if(minus){
       minus.addEventListener('click', function(){
-        if (quantityVal >= 1){
+        if (quantityVal > 1){
           quantityVal--;
           totalVal = quantityVal * priceVal;
           quantity.value = quantityVal;
           total.value = totalVal;
-          console.log(quantityVal, totalVal, priceVal);
+          deduct_price.innerHTML  = totalVal;
+          remain_price.innerHTML = now_point.innerHTML - totalVal;
+          if(remain_price.innerHTML < 0){
+            remain_price.style.color = 'red';
+          }else{
+            remain_price.style.color = 'black';
+          }
       }else{
         quantityVal = 1;
         }
@@ -230,26 +307,70 @@
     }
   }
 </script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+{% comment %} ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ찜하기ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ {% endcomment %}
 <script type="text/javascript">
-    $(".wish").click(function () { // .like 버튼을 클릭 감지
-      {% if request.session %}
-        $.ajax({ // ajax로 서버와 통신
-            type: "POST", // 데이터를 전송하는 방법
-            url: "./wish/", // 통신할 url을 지정
-            data: {'csrfmiddlewaretoken': '{{ csrf_token }}' }, // 서버로 데이터 전송시 옵션, pk를 넘겨야 어떤 video인지 알 수 있음
-            dataType: "json",
-            success: function (response) { // 성공
-                console.log(response)
-                alert(response.message);
-                $("#count").html("좋아요&nbsp;" + response.wish_count + "개"); // 좋아요 개수 변경
-            },
-            error: function (request, status, error) { // 실패
-            },   
-        });
+  $(".wish").click(function () { // .like 버튼을 클릭 감지
+    {% if user.is_authenticated %}
+      $.ajax({ // ajax로 서버와 통신
+          type: "POST", // 데이터를 전송하는 방법
+          url: "./wish/", // 통신할 url을 지정
+          data: {'csrfmiddlewaretoken': '{{ csrf_token }}' }, // 서버로 데이터 전송시 옵션, pk를 넘겨야 어떤 video인지 알 수 있음
+          dataType: "json",
+          success: function (response) { // 성공
+              alert(response.message);
+              $("#count").html(response.wish_count); // 좋아요 개수 변경
+              if(response.message == "좋아요"){
+                $(".wish").attr('class', 'wish heart')
+              }else{
+                $(".wish").attr('class', 'wish cleanheart')
+              }
+          },
+          error: function (request, status, error) { // 실패
+          },   
+      });
       {% else %}
-          window.location.replace("/accounts/login/") // 로그인 페이지로 넘어가기
+      window.location.replace("/accounts/login/") // 로그인 페이지로 넘어가기
       {% endif %}
-    })
+  })
+</script>
+{% comment %} ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ구매하기ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ {% endcomment %}
+
+<script type="text/javascript">
+
+  $("#buy_box").click(function () { // .like 버튼을 클릭 감지
+    {% if not user.is_authenticated %}
+      alert("로그인이 필요한 서비스입니다.")
+      window.location.replace("/accounts/login/") // 로그인 페이지로 넘어가기
+    {% endif %}
+  });
+
+  //구매버튼 눌렀을때
+  $("#buynow").click(function () { // .like 버튼을 클릭 감지
+    {% if user.is_authenticated %}
+
+    if(remain_price.innerHTML < 0){
+      alert('포인트가 부족합니다.')
+    }else{
+      $.ajax({ // ajax로 서버와 통신
+        type: "POST", // 데이터를 전송하는 방법
+        url: "./buy/", // 통신할 url을 지정
+        data: {'quantityVal' : quantityVal,
+        'priceVal' : priceVal,
+        'csrfmiddlewaretoken': '{{ csrf_token }}' }, 
+        dataType: "json",
+        success: function (response) { // 성공
+            if(response.content){
+              alert('구매 완료되었습니다.')
+              window.location.replace("./")
+            }
+        },
+        error: function (request, status, error) { // 실패
+        },   
+      })
+    }
+    {% else  %}
+      alert("비정상적인 접근입니다.")
+    {% endif %}
+});
 </script>
 {% endblock script_section %}
