@@ -52,7 +52,7 @@ def priceViewbyParam(request, product_id):
     lastmonth = today.month
 
     product = Product.objects.get(pNo=product_id)
-    #좋아요 되어잇는지 아닌지
+    # 좋아요 되어잇는지 아닌지
     isLike = None
     user = request.user
     if product.wish_user.filter(id=user.id).exists():
@@ -117,7 +117,7 @@ def priceViewbyParam(request, product_id):
              'next_price': next_price,  # 다음달 상품 가격
              'now_price': now_price,    # 현재 상품 가격
              'wish_count': product.count_wish_user(),
-             'isLike' : isLike,
+             'isLike': isLike,
              })
 
 
