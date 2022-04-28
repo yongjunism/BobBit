@@ -132,6 +132,24 @@
     font-weight: 500;
 }
 
+.predict .name_section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.predict .name_section .heart_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.predict .name_section .heart_section #count {
+    margin: 0.1rem 0 0 0.5rem;
+    font-size: 0.8rem;
+}
+
 /* Down Box */
 .predict #down_Box {
     position: relative;
@@ -207,6 +225,7 @@
     cursor: pointer;
     color: white;
     background-color: #1B555B;
+    transition: 0.2s;
     border: none;
 }
 
@@ -333,4 +352,88 @@
 #product_row input:hover {
     background-color: #516b70;
     color: white;
+}
+
+.price-table {
+    table-layout: fixed;
+    width: 100%;
+    border: 4px solid #e6e6e6;
+}
+
+.price-table tr th {
+    border-right: 1px solid #dcdcdc;
+    background-color: #f0f0f0;
+}
+
+.price-table tr th,
+.price-table tr td {
+    text-align: center;
+    height: 50px;
+    font-size: 18px;
+    line-height: 18px;
+    color: #000;
+    vertical-align: middle;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+#heart_section {
+    margin-top: 1rem;
+}
+
+.heart {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: #ea2027;
+    position: relative;
+    transform: rotate(45deg);
+}
+
+.heart::before,
+.heart::after {
+    cursor: pointer;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #ea2027;
+}
+
+.heart::before {
+    left: -50%;
+}
+
+.heart::after {
+    top: -50%;
+}
+
+.cleanheart {
+    cursor: pointer;
+    margin-left: 0.5rem;
+    width: 1rem;
+    height: 1rem;
+    position: relative;
+    transform: rotate(45deg);
+    background-color: #d3aeaf;
+}
+
+.cleanheart::before,
+.cleanheart::after {
+    cursor: pointer;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    border-radius: 50%;
+    background-color: #d3aeaf;
+}
+
+.cleanheart::before {
+    left: -50%;
+}
+
+.cleanheart::after {
+    top: -50%;
 }
