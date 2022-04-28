@@ -104,7 +104,7 @@ def priceViewbyParam(request, product_id):
              'pd_data': pd_data,        # 해당 상품의 지금까지 csv데이터
              'next_price': next_price,  # 다음달 상품 가격
              'now_price': now_price,
-             'wish_count': model_to_dict(item)['wish_user'].count_wish_user()}  # 현재 상품 가격
+             'wish_count': product.count_wish_user(),}# 현재 상품 가격
         )
 
 @login_required
