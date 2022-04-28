@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
 from django.views.generic.base import TemplateView
-from bbuser.models import User
 
 from django.contrib.auth.decorators import login_required
 
@@ -9,10 +8,6 @@ from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm
 
 # Create your views here.
-
-
-class TestView(TemplateView):
-    template_name = "bbuser/test.html"
 
 
 @login_required
@@ -50,4 +45,3 @@ def pointUp(request):
     user.save()
 
     return redirect("/")
-
