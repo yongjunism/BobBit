@@ -57,7 +57,7 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
         df.drop(drop_indexs, inplace=True)
         filename = spec + '_prodata.csv'
         # 경로지정
-        df.to_csv('../csv/result_product_csv/'+filename, index=False)
+        df.to_csv('../csv/result_product_csv/'+filename, index=False, encoding='utf-8-sig')
 
         # 현재까지 데이터로 모델 생성
         # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
@@ -82,14 +82,14 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
 
 
 # 추출하고 싶은 상품 list
-spec_list = ['[동서식품]맥심 모카골드 믹스','계란']
+spec_list = ['계란']
 # 커피 csv
-product_csv = 'price_consumer_coffee.csv'
+product_csv = 'egg.csv'
 # 원자재 csv
-materials_csv = ['런던 설탕 선물 내역.csv',
-                 '런던 커피 선물 내역.csv',
-                 '미국 설탕 No.11 선물 내역.csv',
-                 '미국 커피 C 선물 내역.csv']
+materials_csv = ['귀리 선물 내역.csv',
+                 '미국 대두박 선물 내역.csv',
+                 '미국 소맥 선물 내역.csv',
+                 '미국 옥수수 선물 내역.csv']
 
 
 C_to_DB_consumerprice(spec_list, product_csv, materials_csv)
