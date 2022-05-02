@@ -675,6 +675,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 6rem;
+    width: 6rem;
 }
 
 .header-content .header-user .base_profile_img_container {
