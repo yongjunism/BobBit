@@ -2478,10 +2478,13 @@ body .global-video-bullet-box .video-container .vjs-paused .vjs-big-play-button 
 
     .header-content .nav-menu .nav-item .nav-menu-drop .download-nav {
         width: 96%;
+        display: flex;
+        flex-direction: row;
     }
 
     .header-content .nav-menu .nav-item .nav-menu-drop .download-nav li {
         width: 60%;
+
     }
 
     .header-content .nav-menu .nav-item .nav-menu-drop .download-nav li:last-child {
