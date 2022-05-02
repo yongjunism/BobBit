@@ -163,13 +163,13 @@
     margin: 0;
     font-size: 2.4rem;
     font-weight: 500;
-    color: #9E4747;
+    color: #929CE6;
 }
 
 .predict #down_Box .icon {
     margin: 0;
     line-height: 4rem;
-    color: #9E4747;
+    color: #929CE6;
 }
 
 .predict #down_Box p {
@@ -191,13 +191,13 @@
     margin: 0;
     font-size: 2.4rem;
     font-weight: 500;
-    color: #929CE6;
+    color: #9E4747;
 }
 
 .predict #up_Box .icon {
     margin: 0;
     line-height: 4rem;
-    color: #929CE6;
+    color: #9E4747;
 }
 
 .predict #up_Box p {

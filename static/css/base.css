@@ -80,7 +80,6 @@ input::-ms-reveal {
 
 * {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-appearance: none;
 }
 
 h1 {
@@ -659,7 +658,7 @@ h1 {
 .header-content .header-user {
     float: right;
     display: flex;
-    width:300px;
+    width: 300px;
     position: relative;
     height: 36px;
 }
@@ -671,11 +670,13 @@ h1 {
     flex-wrap: nowrap;
     width: 200px;
 }
+
 .header-content .header-user .header-user-profile .header-user-profile-text {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .header-content .header-user .base_profile_img_container {
     display: flex;
     justify-content: center;
@@ -684,7 +685,7 @@ h1 {
     width: 35px;
 }
 
-.header-content .header-user .base_profile_img_container .base_profile_img{
+.header-content .header-user .base_profile_img_container .base_profile_img {
     position: unset;
     width: 30px;
     height: 30px;
@@ -699,6 +700,7 @@ h1 {
     justify-content: center;
     align-items: center;
 }
+
 .header-content .header-user::after {
     clear: both;
     width: 0;
