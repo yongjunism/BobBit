@@ -675,6 +675,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-width: 6rem;
+    width: 6rem;
 }
 
 .header-content .header-user .base_profile_img_container {
@@ -2478,10 +2480,13 @@ body .global-video-bullet-box .video-container .vjs-paused .vjs-big-play-button 
 
     .header-content .nav-menu .nav-item .nav-menu-drop .download-nav {
         width: 96%;
+        display: flex;
+        flex-direction: row;
     }
 
     .header-content .nav-menu .nav-item .nav-menu-drop .download-nav li {
         width: 60%;
+
     }
 
     .header-content .nav-menu .nav-item .nav-menu-drop .download-nav li:last-child {
