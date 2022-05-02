@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.fields import CharField, IntegerField, FloatField, DateField
 from django.conf import settings
+from sqlalchemy import Float
 from bbuser.models import User
 
 
@@ -17,9 +18,11 @@ class Product(models.Model):
     pNo = IntegerField(primary_key=True)
     pName = CharField(max_length=30)
     price = IntegerField(default=0)
+    nextprice = IntegerField(default=0)
+    percent = FloatField(default=0)
     pSearchcount = IntegerField(default=0)
     pWishcount = IntegerField(default=0)
-    pLink = CharField(max_length=255, null=True)
+    RMSE = FloatField(default=0, null=True)
     pImage = CharField(max_length=255, null=True)
     cKey = models.ForeignKey(
         Categori, on_delete=models.CASCADE, db_column='cKey', null=True)
