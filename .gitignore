@@ -9,3 +9,5 @@ db.sqlite3
 db.sqlite3-journal
 my_settings.py
 *.py[cod]
+DatabaseConfig.py
+*.py[cod]
