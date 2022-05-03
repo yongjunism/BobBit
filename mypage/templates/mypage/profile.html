@@ -38,17 +38,14 @@
         <img class='base_profile_img' src="/media/{{ user.profile_img }}" width="80rem" height="80rem" style="border-radius: 50%;" alt="Profile_img">
         {% else %}
         <img class='base_profile_img' src="/media/profile/default.png" width="80rem" height="80rem" style="border-radius: 50%;" alt="Profile_img">
-        {% endif %}{{ user.username }}님
+        {% endif %}
+        <br>
+        {{ user.username }}님
     </div>
             <div class="buttons"> 
                 <button id="" onclick="location.href='/mypage/changeprofile/'" class="btn btn-outline-primary px-4">회원정보 변경</button> 
                 <button id="profile_delete" onclick="location.href='/mypage/profile/delete' "class="btn btn-primary px-4 ms-3">회원탈퇴</button> </div>
           <div class="container">
-            <div class="item">아이디</div>
-            <hr style="width: 40%; border: thin solid;">
-            <div class="item">{{ user.username }}</div>
-            <br>
-            <br>
             <div class="item">이름</div>
             <hr style="border: thin solid; width: 40%;">
             <div class="item">{{ user.last_name }}</div>
@@ -65,9 +62,8 @@
             <br>
             <br>
             <div class="item">
-              <button id="" onclick="location.href=''" class="btn btn-outline-primary px-4">찜한 상품목록</button></div>
+              <button id="" onclick="location.href='/mypage/profile/wishlist/'" class="btn btn-outline-primary px-4">찜한 상품목록</button></div>
             <hr style="border: thin solid; width: 40%;">
-            <div class="item">찜한 개수:{{ user.point }}</div>
           </div>
     </section>
 
