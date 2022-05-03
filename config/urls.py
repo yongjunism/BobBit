@@ -28,5 +28,7 @@ urlpatterns = [
     path("mypage/", include("mypage.urls")),
     path("", include("qandaBoard.urls")),
     path("rank/", include("rank.urls")),
+    path("adminpg/", include("bbadmin.urls")),
+    path("chatbot/", include("chatbot.urls")),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

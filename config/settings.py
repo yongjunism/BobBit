@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     "bbuser",
     "mypage",
     "rank",
+    "bbadmin",
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
