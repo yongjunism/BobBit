@@ -53,17 +53,38 @@
         </div>
     </div>
     <div class="round">
+        <script src="static/js/pred.js"></script>
+        <script src ="https://d3js.org/d3.v4.min.js"></script>
+        <script>
+            let mydata = JSON.parse(JSON.stringify(data));
+            console.log(mydata);
+            cow = (((mydata[1].price-mydata[0].price)/mydata[0].price)*100).toFixed(2)
+            pig = (((mydata[3].price-mydata[2].price)/mydata[2].price)*100).toFixed(2)
+            chicken = (((mydata[5].price-mydata[4].price)/mydata[4].price)*100).toFixed(2)
+        </script>
         <div class="box">
             <a><h2>급등예상</h2></a>
         </div>
         <div class="box">
-            <a href="./url">1.</a>
+            <a id = 'box1' href="./price/5">
+                <script>
+                    document.getElementById('box1').innerHTML="1."+ mydata[1].price + "원<br>" + cow + "%"
+                </script>
+            </a>
         </div>
         <div class="box">
-            <a href="./url">2.</a>
+            <a id = 'box2' href="./price/5">
+                <script>
+                    document.getElementById('box2').innerHTML="2."+ mydata[3].price + "원<br>" + pig + "%"
+                </script>
+            </a>
         </div>
         <div class="box">
-            <a href="./url">3.</a>
+            <a id = 'box3' href="./price/5">
+                <script>
+                    document.getElementById('box3').innerHTML="3."+ mydata[5].price + "원<br>" + chicken + "%"
+                </script>
+            </a>
         </div>
         <div class="box">
             <a href="./url">4.</a>
