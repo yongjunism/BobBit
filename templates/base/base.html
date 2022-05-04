@@ -66,10 +66,10 @@
                     </div>
                 </div>
                 <div class="nav-item">
-                    <a href="/rank">랭킹</a>
+                    <a href="{% url 'rank:ranking' %}">랭킹</a>
                 </div>
                 <div class="nav-item">
-                    <a href="/qna">QnA</a>
+                    <a href="{% url 'qandaBoard:index' %}">QnA</a>
                 </div>
             </div>
             <div class="header-user" style="margin-right:230px;">
@@ -90,7 +90,7 @@
                     {% if user.username == 'admin' %}
                     <a href="{% url 'bbadmin:adpage' %}" class="user-btn" rel="nofollow">관리자페이지</a>
                     {% else %}
-                    <a href="/mypage/profile" class="user-btn" rel="nofollow">마이페이지</a>
+                    <a href="{% url 'mypage:profile' %}" class="user-btn" rel="nofollow">마이페이지</a>
                     {% endif %}
                     <button class="user-btn" type="submit" style="cursor:pointer">로그아웃</button>
                     </form>
@@ -110,8 +110,8 @@
             </div>
         </div>
         <div class="header-lark">
-            <a href="https://app.mockplus.com/app"><i class="iconfont icon_tag_home"></i></a>
-            <a href="javascript:location.replace(location);"><i class="iconfont icon_tag_refresh"></i></a>
+            <!-- <a href="https://app.mockplus.com/app"><i class="iconfont icon_tag_home"></i></a>
+            <a href="javascript:location.replace(location);"><i class="iconfont icon_tag_refresh"></i></a> -->
         </div>
     </header>
     <div class="Container">
