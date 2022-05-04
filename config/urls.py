@@ -30,5 +30,6 @@ urlpatterns = [
     path("rank/", include("rank.urls")),
     path("adminpg/", include("bbadmin.urls")),
     path("chatbot/", include("chatbot.urls")),
+    path("info/", include("productInfo.urls"), name="info"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
