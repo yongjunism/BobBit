@@ -51,6 +51,10 @@ INSTALLED_APPS = [
     "mypage",
     "rank",
     "bbadmin",
+<<<<<<< HEAD
+=======
+    "productInfo",
+>>>>>>> 91762a5b412757bbf347835c218211c7dee29ba6
 ]
 
 MIDDLEWARE = [
