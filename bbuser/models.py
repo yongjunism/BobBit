@@ -17,6 +17,8 @@ class User(AbstractUser):
     profile_img = models.ImageField(null=True, upload_to=content_file_name, blank=True)
     point = models.IntegerField(default=0)
     first_name = None
+    first_login = models.IntegerField(default=0)
+    last_login2 = models.DateTimeField()
 
     def __str__(self):
         return self.username
