@@ -29,11 +29,9 @@ urlpatterns = [
     path("", include("qandaBoard.urls")),
     path("rank/", include("rank.urls")),
     path("adminpg/", include("bbadmin.urls")),
-<<<<<<< HEAD
-    path("chatbot/", include("chatbot.urls"))
-=======
     path("chatbot/", include("chatbot.urls")),
     path("info/", include("productInfo.urls"), name="info"),
->>>>>>> f9c6558f9c0e69a94b83f0e4d0fedfaff74a111c
+    path("predictrel/", include("predictRel.urls")),
+    path("model_check/", views.modal_check)
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -51,13 +51,8 @@ INSTALLED_APPS = [
     "mypage",
     "rank",
     "bbadmin",
-<<<<<<< HEAD
-    'sslserver',
-
-=======
     "productInfo",
     "predictRel",
->>>>>>> f9c6558f9c0e69a94b83f0e4d0fedfaff74a111c
 ]
 
 MIDDLEWARE = [

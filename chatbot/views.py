@@ -1,32 +1,17 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-<<<<<<< HEAD
-from django.utils.decorators import method_decorator
-import json
-# Create your views here.
-
-
-@method_decorator(csrf_exempt)
-def chatbot_api(request):
-    # form 처리
-    try:
-        if request.method == 'POST':
-            body = json.loads(request.body.decode('utf-8'))
-            print(body)
-            return JsonResponse({'message': 'SUCCESS'})
-
-    except Exception as e:
-        return JsonResponse({'content': str(e)}, safe=False)
-=======
 import json
 
 # Create your views here.
+
+
 def keyboard(request):
     return JsonResponse({
         'type': 'text'
     })
-    
+
+
 @csrf_exempt
 def message(request):
     answer = ((request.body).decode('utf-8'))
@@ -49,4 +34,3 @@ def message(request):
                 }]
             }
         })
->>>>>>> f9c6558f9c0e69a94b83f0e4d0fedfaff74a111c
