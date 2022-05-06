@@ -32,6 +32,6 @@ urlpatterns = [
     path("chatbot/", include("chatbot.urls")),
     path("info/", include("productInfo.urls"), name="info"),
     path("predictrel/", include("predictRel.urls")),
-    path("model_check/", views.modal_check)
+    path("modal_check/", views.modal_check)
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

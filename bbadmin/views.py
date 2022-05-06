@@ -10,7 +10,7 @@ import numpy as np
 
 import pandas as pd
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error
+from sklearn.metrics import mean_squared_error, mean_absolute_percentage_error
 import joblib
 from statsmodels.tsa.stattools import grangercausalitytests
 
@@ -72,10 +72,10 @@ def df_formatting(price, df, material):
     df['변동 %'] = df['변동 %'].str.replace("%", '')
     
     if '거래량' in list(df):
-        df['거래량'] = df['거래량'].str.replace('K','')
-        df['거래량'] = df['거래량'].apply(M_to_K)
         df.fillna(method='ffill', inplace=True)
         df.fillna(method='bfill', inplace=True)
+        df['거래량'] = df['거래량'].str.replace('K','')
+        df['거래량'] = df['거래량'].apply(M_to_K)
         df = df.astype({'종가': 'float', '변동 %': 'float', '거래량':'float'})
         df.columns = features
     else:
@@ -84,7 +84,7 @@ def df_formatting(price, df, material):
         df.columns = features
 
     # df = slidingwindow(df, material+'종가', 12, is_diff=True)
-    df = df.join(price.set_index('날짜'), on='날짜')
+    df = price.join(df.set_index('날짜'), on='날짜')
 
     df.fillna(method='ffill', inplace=True)
     df.fillna(method='bfill', inplace=True)
@@ -134,12 +134,10 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
         df.fillna(method='ffill', inplace=True)
         df.fillna(method='bfill', inplace=True)
 
-        list()
         # material이랑 product랑 합치는부분
         # count = 0
         # for material in materials_dfs:
         #     df = df.join(material.set_index('날짜'), on='날짜')
-
 
 
         # 과거 데이터 중 NaN제거
@@ -172,8 +170,8 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
 
         model_LR = LinearRegression()
         model_LR.fit(x, y)
-
         pred = model_LR.predict(now_data)
+
         # 마지막 예측가
         next_price = pred[-1]
 
@@ -184,16 +182,18 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
 
         # RMSE
         RMSE = mean_squared_error(y_test, y_pred)**0.5
+        MAPE = mean_absolute_percentage_error(y_test, y_pred)
 
-        # # Product DB 저장
-        # product = get_object_or_404(Product, pName=spec)
-        # product.price = now_price
-        # product.nextprice = next_price
-        # product.RMSE = RMSE
-        # product.save()
+        # Product DB 저장
+        product = get_object_or_404(Product, pName=spec)
+        product.price = now_price
+        product.nextprice = next_price
+        product.RMSE = RMSE
+        product.MAPE = MAPE
+        product.save()
 
-        # # 모델 저장
-        # joblib.dump(model_LR, './static/model/' + spec + '.pkl')
+        # 모델 저장
+        joblib.dump(model_LR, './static/model/' + spec + '.pkl')
 
 
 def load_adpage(request):
