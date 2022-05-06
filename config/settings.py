@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     "mypage",
     "rank",
     "bbadmin",
+    'sslserver',
+
 ]
 
 MIDDLEWARE = [

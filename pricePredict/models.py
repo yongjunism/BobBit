@@ -23,7 +23,7 @@ class Product(models.Model):
     pSearchcount = IntegerField(default=0)
     pWishcount = IntegerField(default=0)
     RMSE = FloatField(default=0, null=True)
-    pImage = CharField(max_length=255, null=True)
+    pImage = CharField(max_length=255, default=0, null=True)
     cKey = models.ForeignKey(
         Categori, on_delete=models.CASCADE, db_column='cKey', null=True)
 
