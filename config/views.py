@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.views.generic.base import TemplateView
 from pricePredict.models import Product
 from django.forms.models import model_to_dict
-
+from django.http import JsonResponse 
 # Create your views here.
 
 
@@ -31,3 +31,10 @@ def HomeView(request):
         for search_item in range(len(s_list)):
             search_list.append(s_list[search_item]["pName"])
         return render(request, "home.html", {"search_list": search_list, 'is_first_login':0})
+
+def modal_check(request):
+    User = get_user_model()
+    user = User.objects.get(username=request.user)
+    user.first_login = 0
+    user.save()
+    return JsonResponse({"message":'성공'})
