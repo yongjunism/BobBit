@@ -1,0 +1,45 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block head %}
+<style>
+.Container {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:nowrap;
+}
+.news_box {
+    display:flex;
+    width: 50%;
+    justify-content: left;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.news {
+    widht:100%;
+    margin-top:30px;
+}
+</style>
+{% endblock head %}
+{% block contents %}
+<div class='news_box'>
+
+{% for article in mat.items %}
+    {% autoescape off %}
+        <div class="news">
+        <a href="article.originallink">{{ article.title }}</a>
+        <br>
+        {{ article.description }}
+        <br>
+        {{ article.pubDate}}
+        </article>
+    </div>
+    {% endautoescape %}
+{% endfor %}
+</div>
+{% comment %} {{}} {% endcomment %}
+{% endblock contents %}
+
+{% block script_section %}
+{% endblock script_section %}

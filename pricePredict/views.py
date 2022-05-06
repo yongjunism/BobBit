@@ -168,3 +168,10 @@ def product_buy(request, product_id):
             return JsonResponse({'content': True}, safe=False)
         except Exception as e:
             return JsonResponse({'content': str(e)}, safe=False)
+
+
+def test(request):
+    products = Product.objects.all()
+    user = request.user
+    for product in products:
+        print(product.wish_user.filter(id=user.id))

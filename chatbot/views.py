@@ -4,11 +4,14 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 
 # Create your views here.
+
+
 def keyboard(request):
     return JsonResponse({
         'type': 'text'
     })
-    
+
+
 @csrf_exempt
 def message(request):
     answer = ((request.body).decode('utf-8'))

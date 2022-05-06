@@ -6,6 +6,6 @@ from django.conf.urls.static import static
 
 app_name = 'chatbot'
 urlpatterns = [
-        path('', views.keyboard),
-        path('message', views.message),
-] 
+    path('', views.keyboard),
+    path('message', views.message),
+]
