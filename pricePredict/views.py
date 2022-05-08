@@ -23,7 +23,8 @@ def CrawlingCoupang(product_name):
     # 쿠팡 크롤링하는 부분
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'}
-    url = f'https://www.coupang.com/np/search?component=&q=' + product_name
+    url = f'https://www.coupang.com/np/search?component=&q=' + \
+        product_name + '&channel=user'
     response = requests.get(url, headers=headers)
     response.encoding = 'utf-8'
     bs = BeautifulSoup(response.text, "html.parser")
@@ -101,8 +102,7 @@ def priceViewbyParam(request, product_id):
         })
 
     # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ크롤링 ㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    # crawlingdata = CrawlingCoupang(product_info['pName'])
-    crawlingdata = []
+    crawlingdata = CrawlingCoupang(product_info['pName'])
 
     if request.method == 'GET':
         return render(
