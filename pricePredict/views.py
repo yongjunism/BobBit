@@ -102,7 +102,8 @@ def priceViewbyParam(request, product_id):
         })
 
     # ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ크롤링 ㅡㅡㅡㅡㅡㅡㅡㅡㅡ
-    crawlingdata = CrawlingCoupang(product_info['pName'])
+    # crawlingdata = CrawlingCoupang(product_info['pName'])
+    crawlingdata = []
 
     if request.method == 'GET':
         return render(
