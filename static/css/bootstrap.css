@@ -6307,7 +6307,7 @@ button.close {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  width: 10%;
+  width: 3rem;
   height: 50%;
   color: #fff;
   text-align: center;

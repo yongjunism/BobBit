@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateView
 from pricePredict.models import Product
 from django.forms.models import model_to_dict
 from django.http import JsonResponse
-from pricePredict.models import Product
+from datetime import date
 # Create your views here.
 
 
@@ -16,22 +16,27 @@ from pricePredict.models import Product
 def HomeView(request):
     print(request.user)
     User = get_user_model()
+    today = date.today()
+
+    search_list = []
+    ranking_list = []
+    s_list = Product.objects.values()
+    r_list = Product.objects.all().order_by('-percent').values()
+    r_list = list(r_list)
+    r_list = r_list[:5]
+
     try:
         user = User.objects.get(username=request.user)
     except User.DoesNotExist:
         user = None
     if user:
-        s_list = Product.objects.values()
-        search_list = []
         for search_item in range(len(s_list)):
             search_list.append(s_list[search_item]["pName"])
-        return render(request, "home.html", {"search_list": search_list, 'is_first_login': user.first_login})
+        return render(request, "home.html", {"today":  today, "r_list": r_list, "search_list": search_list, 'is_first_login': user.first_login})
     else:
-        s_list = Product.objects.values()
-        search_list = []
         for search_item in range(len(s_list)):
             search_list.append(s_list[search_item]["pName"])
-        return render(request, "home.html", {"search_list": search_list, 'is_first_login': 0})
+        return render(request, "home.html", {"today":  today, "r_list": r_list, "search_list": search_list, 'is_first_login': 0})
 
 
 def modal_check(request):

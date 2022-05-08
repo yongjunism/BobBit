@@ -180,6 +180,7 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
         # RMSE
         RMSE = mean_squared_error(y_test, y_pred)**0.5
         MAPE = mean_absolute_percentage_error(y_test, y_pred)
+        percent = round((((next_price - now_price)/now_price) * 100), 2)
 
         # Product DB 저장
         product = get_object_or_404(Product, pName=spec)
@@ -187,6 +188,7 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
         product.nextprice = next_price
         product.RMSE = RMSE
         product.MAPE = MAPE
+        product.percent = percent
         product.save()
 
         # 모델 저장
