@@ -24,6 +24,7 @@ def df_formatting(df):
     if(df['종가'].dtypes != 'float64'):
         df['종가'] = df['종가'].str.replace(",", '')
     df['변동 %'] = df['변동 %'].str.replace("%", '')
+
     df = df.astype({'종가': 'float', '변동 %': 'float'})
     return df
 
@@ -60,6 +61,7 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
             df.rename(columns={'종가': 'm_price' + str(count),
                                '변동 %': 'm_per' + str(count)}, inplace=True)
             count += 1
+        print(df)
 
         # 과거 데이터 중 NaN제거
         drop_indexs = df.loc[df['m_price0'].isna() == True].index
