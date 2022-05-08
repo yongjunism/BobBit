@@ -70,6 +70,10 @@ def df_formatting(price, df, material):
     if(df['종가'].dtypes != 'float64'):
         df['종가'] = df['종가'].str.replace(",", '')
     df['변동 %'] = df['변동 %'].str.replace("%", '')
+<<<<<<< HEAD
+
+    df = df.astype({'종가': 'float', '변동 %': 'float'})
+=======
     
     if '거래량' in list(df):
         df.fillna(method='ffill', inplace=True)
@@ -98,6 +102,7 @@ def df_formatting(price, df, material):
 
     features.remove('날짜')
     df.drop(features, axis=1, inplace=True)
+>>>>>>> b8f84267481802baafbaab7f541a1b2265c42ea6
     return df
 
 
@@ -135,10 +140,20 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
         df.fillna(method='bfill', inplace=True)
 
         # material이랑 product랑 합치는부분
+<<<<<<< HEAD
+        count = 0
+        for material in materials_dfs:
+            df = df.join(material.set_index('날짜'), on='날짜')
+            df.rename(columns={'종가': 'm_price' + str(count),
+                               '변동 %': 'm_per' + str(count)}, inplace=True)
+            count += 1
+        print(df)
+=======
         # count = 0
         # for material in materials_dfs:
         #     df = df.join(material.set_index('날짜'), on='날짜')
 
+>>>>>>> b8f84267481802baafbaab7f541a1b2265c42ea6
 
         # 과거 데이터 중 NaN제거
         # drop_indexs = df.loc[df['m_price0'].isna() == True].index
