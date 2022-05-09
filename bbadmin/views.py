@@ -64,7 +64,7 @@ def df_formatting(price, df, material):
         df.drop('거래량', axis=1, inplace=True)
     # formatting
     df['날짜'] = pd.to_datetime(df['날짜'], format='%Y년 %m월')
-    if(df['종가'].dtypes != 'float64'):
+    if(df['종가'].dtypes != 'float64' and df['종가'].dtypes != 'int64'):
         df['종가'] = df['종가'].str.replace(",", '')
     df['변동 %'] = df['변동 %'].str.replace("%", '')
 
