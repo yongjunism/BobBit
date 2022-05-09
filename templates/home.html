@@ -14,19 +14,18 @@
     .navbar-light{background-color:#d9e6e9 !important;height:68px;}
     .navbar-brand {
         font-size: 2.2rem !important;
-        padding: 0px !important;
         font-style: italic !important;
         font-weight: bold !important;
-        color: gold !important;
+        color: black !important;
     }
     .offset-md-6{margin-left:0% !important; background-color:#e8b4d4 !important;}
-    .card{margin-left:50%;border-radius:30px;background-color:#b4dae7;}
+    .card{margin-left:50%;border-radius:30px !important;background-color:#b4dae7 !important;}
     .bg-info{width:760px; margin:0 auto;background-color:#d9e6e9 !important;}
-    .card-body{font-style:normal !important;}
+    .card-body{font-style:normal !important; padding:0.8rem !important; text-align:left !important;}
     .navbar-brand{margin:0 auto;}
     textarea{width:440px !important;}
     #app ::-webkit-scrollbar {display: none;}
-    #app{width:470px;}
+    #app{width:470px;height:640px;}
     .send-btn{top:21px;}
     *,
     *::before,
@@ -40,8 +39,9 @@
     .chatbot{position: fixed;left:1530px;top:710px;}
     button{border:0px solid red; background-color:transparent;}
     .chatbot img{width:70px; height:70px;}
-    .modal{left:550px;top:50px;position:static !important;}
+    .modal{left:1100px !important ;top:136px !important; text-align:center}
     .modal a.close-modal{display:none;}
+    .offset-md-6 {background-color: #e8b4d4 !important;}
 </style>
 {% comment %} 챗봇 head 끝 {% endcomment %}
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
