@@ -37,11 +37,7 @@
                         <span>{{ forloop.counter }}</span>
                     </th>
                     <td>
-                        <span>{% if Ranking.profile_img %}
-                            <img class='base_profile_img' src="/media/{{ user.profile_img }}" width="30rem" height="30rem" style="border-radius: 50%;" alt="Profile_img">
-                            {% else %}
-                            <img class='base_profile_img' src="/media/profile/default.png" width="30rem" height="30rem" style="border-radius: 50%;" alt="Profile_img">
-                            {% endif %}{{ Ranking.username }}</span>
+                        <span>{{ Ranking.username }}</span>
                     </td>
                     <td>
                         <span>{{ Ranking.point }}</span>
