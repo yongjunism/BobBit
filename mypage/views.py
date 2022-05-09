@@ -4,6 +4,9 @@ from mypage.forms import ChangeProfileForm, CheckPasswordForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth import logout
 from django.contrib import messages
+from django.core.paginator import Paginator
+from pricePredict.models import Product, VirtualProduct
+from django.forms.models import model_to_dict
 
 
 @login_required
@@ -60,3 +63,11 @@ def profile_delete_view(request):
         password_form = CheckPasswordForm(request.user)
 
     return render(request, 'mypage/profile_delete.html', {'password_form':password_form})
+
+
+@login_required
+def product_wishlistView(request):
+    user = request.user
+    w=user.wish_product.all()
+    
+    return render(request, 'mypage/wishlist.html', {'w': w})

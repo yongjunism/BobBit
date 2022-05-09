@@ -1,5 +1,8 @@
 from django.db import models
+from django.db.models.fields import *
 from django.conf import settings
+from bbuser.models import User
+from pricePredict.models import Product
 import os
 
 def content_file_name(instance, filename):

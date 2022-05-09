@@ -7,4 +7,5 @@ urlpatterns = [
     path("profile/", views.profile, name='profile'),
     path("changeprofile/", views.ChangeProfileView),
     path('profile/delete/', views.profile_delete_view, name='profile_delete'),
+    path('profile/wishlist/', views.product_wishlistView),
 ]
