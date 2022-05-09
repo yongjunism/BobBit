@@ -10,7 +10,7 @@
       }
     </style>
   </header>
-<section class="content">
+<section class="content" style="padding-top: 90px;padding-bottom: 100px;">
     <h1>회원탈퇴</h1>
 <form method="POST" novalidate>
     {% csrf_token %}
@@ -23,25 +23,23 @@
     </p>
    
     {% for account in user.socialaccount_set.all %}
-
     <label>
         <input type="checkbox" name="ck" onClick="checkDisable(this.form)">
-        <span>유의사항 동의</span>
+        <span><br><br>유의사항 동의</span>
     </label>
     
     <button type="submit" name="bt" disabled="true">탈퇴하기</button>
-    
 {% empty %}
     {% if user.is_authenticated %}
     <div>
-        <label name="label_password" for="{{ password_form.password.id_for_label }}">{{ password_form.password.label }}</label>
+        <label name="label_password" for="{{ password_form.password.id_for_label }}" >{{ password_form.password.label }}</label>
         {{ password_form.password }}
         {% if password_form.password.errors %}
-        <script type="text/javascript">
+        <script type="text/javascript" >
             document.getElementsByName('password')[0].setAttribute('class', 'form-control is-invalid')
         </script>
         {% for error in password_form.password.errors %}
-        <div class="invalid-feedback">
+        <div class="invalid-feedback" >
             {{ error }}
         </div>
         {% endfor %}
@@ -52,7 +50,7 @@
     </div>
 
     <label>
-        <input type="checkbox" name="ck" onClick="checkDisable(this.form)">
+        <input type="checkbox" name="ck" onClick="checkDisable(this.form)" style="margin-top: 25px;">
         <span>유의사항 동의</span>
     </label>
 
