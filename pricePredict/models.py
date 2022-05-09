@@ -31,7 +31,7 @@ class Product(models.Model):
     wish_user = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         blank=True,
-        related_name='wish_user'
+        related_name='wish_product'
     )
 
     def count_wish_user(self):
