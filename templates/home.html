@@ -11,13 +11,22 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
 <style>
+    .navbar-light{background-color:#d9e6e9 !important;height:68px;}
+    .navbar-brand {
+        font-size: 2.2rem !important;
+        padding: 0px !important;
+        font-style: italic !important;
+        font-weight: bold !important;
+        color: gold !important;
+    }
     .offset-md-6{margin-left:0% !important; background-color:#e8b4d4 !important;}
     .card{margin-left:50%;border-radius:30px;background-color:#b4dae7;}
-    .navbar{width:760px; margin:0 auto;background-color:#d9e6e9 !important;}
+    .bg-info{width:760px; margin:0 auto;background-color:#d9e6e9 !important;}
     .card-body{font-style:normal !important;}
     .navbar-brand{margin:0 auto;}
     textarea{width:440px !important;}
     #app ::-webkit-scrollbar {display: none;}
+    #app{width:470px;}
     .send-btn{top:21px;}
     *,
     *::before,
@@ -31,7 +40,7 @@
     .chatbot{position: fixed;left:1530px;top:710px;}
     button{border:0px solid red; background-color:transparent;}
     .chatbot img{width:70px; height:70px;}
-    .modal{left:550px;top:50px;}
+    .modal{left:550px;top:50px;position:static !important;}
     .modal a.close-modal{display:none;}
 </style>
 {% comment %} 챗봇 head 끝 {% endcomment %}
@@ -356,7 +365,32 @@
             </div>
         </div>
     </section>
+{% comment %} 챗봇 부분 시작 {% endcomment %}
+<div class="chatbot"><a href="#app" rel="modal:open"><button><img src="media\profile\그림1.png"></button></a></div>
+<main style="display: none !important">
+    <div id="app" class="container top-padding">
+        <nav class="navbar-light" style="width:440px;">
+            <span class="navbar-brand mb-0 display-1">Bobbot</span> 
+        </nav>
+        <div class="row">
+            <div class="offset-md-2 col-sm-12" style= "height:450px;overflow-y:scroll;margin:0 auto;margin-top:10px;">
+                <div class="card col-md-6" v-for="message in messages" v-bind:class="{'user-message': message.user,  'chat-message': message.chat_bot, 'offset-md-6': message.chat_bot}">
+                    <div class="card-body">
+                        [[message.text]]
+                    </div>
+                </div>
+            </div>
 
+        </div>
+        <div id="text-box" class="row top-padding">
+            <div class="col-md-8">
+                <textarea placeholder="질문을 입력하세요.." class="form-control" v-model="input" v-bind:class="{ 'border-danger': send_blank}" v-on:change="check_content"></textarea>
+                <i class="fas fa-arrow-circle-right send-btn" v-on:click="add_message" style="right:-128px;"></i>
+            </div>
+        </div>
+    </div>
+</main>
+{% comment %} 챗봇부분 끝 {% endcomment %}
 {% endblock contents %}
 
 {% block script_section %}
@@ -374,7 +408,6 @@
 <script src="{% static 'js/reveal.js'%}"></script>
 
 <script>
-
     $(function() {
 		var price_list =[
             {% for item in search_list %}
@@ -402,83 +435,6 @@
 		});
 	});
 </script>
-{% endblock head %}
-{% block contents %}
-<div class="banner-inner" id='Nav'>
-    <div class ="banner-cover">
-        <h1>원하시는 상품의 물가를 확인해보세요</h1>
-        <div class="search">
-            <input class ='search_input'
-                    type="text"
-                    id = 'value'
-                    placeholder="궁금한 제품을 검색하세요."
-                    onfocus="this.placeholder=''" 
-                    onKeypress="javascript:if(event.keyCode==13){search()}"
-                    spellcheck="false">
-            <button class = "search_button" type="button" style = 'background-color:transparent;' onclick='search()'>
-                <img class ='search_img' src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-            </button>
-        </div>
-    </div>
-    <div class="round">
-        <div class="box">
-            <a><h2>급등예상</h2></a>
-        </div>
-        <div class="box">
-            <a href="./url">1.</a>
-        </div>
-        <div class="box">
-            <a href="./url">2.</a>
-        </div>
-        <div class="box">
-            <a href="./url">3.</a>
-        </div>
-        <div class="box">
-            <a href="./url">4.</a>
-        </div>
-        <div class="box">
-            <a href="./url">5.</a>
-        </div>
-    </div>
-    <hr class='line'>
-    {% comment %} <table class='def' >
-        <td>
-            밥비트입니다.
-            밥비트입니다.
-            밥비트입니다.
-            밥비트입니다.
-            밥비트입니다.
-            밥비트입니다.
-        </td>
-    </table> {% endcomment %}
-</div>
-
-{% comment %} 챗봇 부분 시작 {% endcomment %}
-<div class="chatbot"><a href="#app" rel="modal:open"><button><img src="media\profile\그림1.png"></button></a></div>
-<main style="display: none !important">
-    <div id="app" class="container top-padding">
-        <nav class="navbar navbar-light bg-info" style="width:440px;">
-            <span class="navbar-brand mb-0 display-1">Bobbot</span> 
-        </nav>
-        <div class="row">
-            <div class="offset-md-2 col-sm-12" style= "height:450px;overflow-y:scroll;margin:0 auto;margin-top:10px;">
-                <div class="card col-md-6" v-for="message in messages" v-bind:class="{'user-message': message.user,  'chat-message': message.chat_bot, 'offset-md-6': message.chat_bot}">
-                    <div class="card-body">
-                        [[message.text]]
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div id="text-box" class="row top-padding">
-            <div class="col-md-8">
-                <textarea placeholder="질문을 입력하세요.." class="form-control" v-model="input" v-bind:class="{ 'border-danger': send_blank}" v-on:change="check_content"></textarea>
-                <i class="fas fa-arrow-circle-right send-btn" v-on:click="add_message" style="right:-128px;"></i>
-            </div>
-        </div>
-    </div>
-</main>
-{% comment %} 챗봇부분 끝 {% endcomment %}
 <script>
     function search() {
         var price = document.getElementById('value').value;
@@ -489,5 +445,4 @@
         {% endfor %}
     }
 </script>
-
 {% endblock script_section %}
