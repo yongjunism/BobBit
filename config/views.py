@@ -31,11 +31,13 @@ def HomeView(request):
         user = None
     if user:
         for search_item in range(len(s_list)):
-            search_list.append(s_list[search_item]["pName"])
+            search_list.append({'pName' : s_list[search_item]["pName"], 
+                                'pNo' : s_list[search_item]["pNo"]})
         return render(request, "home.html", {"today":  today, "r_list": r_list, "search_list": search_list, 'is_first_login': user.first_login})
     else:
         for search_item in range(len(s_list)):
-            search_list.append(s_list[search_item]["pName"])
+            search_list.append({'pName' : s_list[search_item]["pName"], 
+                                'pNo' : s_list[search_item]["pNo"]})
         return render(request, "home.html", {"today":  today, "r_list": r_list, "search_list": search_list, 'is_first_login': 0})
 
 
