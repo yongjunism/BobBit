@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     "bbadmin",
     'rest_framework',
     "sili"
+    "productInfo",
+    "predictRel",
 ]
 
 MIDDLEWARE = [

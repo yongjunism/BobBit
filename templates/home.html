@@ -35,17 +35,351 @@
     .modal a.close-modal{display:none;}
 </style>
 {% comment %} 챗봇 head 끝 {% endcomment %}
+<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 <link href="{% static 'css/home.css' %}" rel="stylesheet">
+<link href="{% static 'css/enterprise432b.css' %}" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+<!-- Vendor CSS Files -->
+<link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+<link href="{% static 'vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+<style>
+    #modal.modal-overlay {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.25);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(3px);
+        -webkit-backdrop-filter: blur(1.5px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        z-index:20;
+    }
+    #modal .modal-window {
+        background: rgba( 69, 139, 197, 0.70 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 13.5px );
+        -webkit-backdrop-filter: blur( 13.5px );
+        border-radius: 10px;
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+        width: 400px;
+        height: 130px;
+        position: relative;
+        top: -100px;
+        padding: 10px;
+    }
+    #modal .title {
+        padding-left: 10px;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+        text-shadow: 1px 1px 2px gray;
+        color: white;
+        
+    }
+    #modal .title h2 {
+        display: flex;
+
+    }
+    #modal .close-area {
+        display: flex;
+        float: right;
+        width:100%;
+        justify-content:right;
+        padding-right: 10px;
+        cursor: pointer;
+        text-shadow: 1px 1px 2px gray;
+        color: white;
+    }
+    
+</style>
+{% endblock head %}
+
+{% block contents %}
+{% if is_first_login %}
+<div id="modal" class="modal-overlay">
+    <div class="modal-window">
+        <div class="close-area">X</div>
+        <div class="title">
+            <h2>출석하여 포인트가 충전되었습니다.</h2>
+        </div>
+    </div>
+</div>
 <script>
+    const closeBtn = modal.querySelector(".close-area")
+    closeBtn.addEventListener("click", e => {
+        modal.style.display = "none"
+        fetch('/modal_check').response(msg => console.log(msg))
+    })
+</script>
+{% endif %}
+
+<script>
+    let t_month;
+    let t_year = String({{today.year}})
+    if({{today.month}} < 10){
+        t_month = "0" + String({{today.month}});
+    }else{
+        t_month = String({{today.month}})
+    }
+
+    let dateview = t_year + "년 " + t_month + "월 "
+</script>
+<div class="banner-inner" id='Nav'>
+    <div class ="banner-cover">
+        <h1>원하시는 상품의 물가를 확인해보세요</h1>
+        <div class="search">
+            <input class ='search_input'
+                    type="text"
+                    id = 'value'
+                    placeholder="궁금한 제품을 검색하세요."
+                    onfocus="this.placeholder=''" 
+                    onKeypress="javascript:if(event.keyCode==13){search()}"
+                    spellcheck="false">
+            <button class = "search_button" type="button" style = 'background-color:transparent;' onclick='search()'>
+                <img class ='search_img' src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+            </button>
+        </div>
+    </div>
+    <div class ="subtitle">
+        <h2>
+            객월 급등 예상 품목 순위
+        </h2>
+    </div>
+    <div class="round">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+            </ol>
+            <script>
+                let rank_No = 1;
+            </script>
+            <div class="carousel-inner">
+                {% for r in r_list %}
+                    {% if r.pNo == r_list.0.pNo %}
+                <div class="carousel-item active">
+                    {% else %}
+                <div class="carousel-item">
+                    {% endif %}
+                  <div class = 'itembox'>
+                      <div class = "rowBox">
+                          <div class = 'itemname'>
+                              <p class = "count">
+                                  <script>
+                                      document.write(rank_No);
+                                      rank_No++;
+                                  </script>
+                              </p>
+                              <p>{{r.pName}}</p>
+                          </div>
+                          <div class ="linkbox">
+                              <a href = "./price/{{r.pNo}}">해당 품목 페이지로 이동</a>
+                          </div>
+                      </div>
+                      <div class = 'line'></div>
+                      <div class = "rowBox">
+                          <section>
+                              <p class ="t_date">
+                              <script>
+                                  document.write(dateview);
+                              </script>
+                              기준가
+                              </p>
+                          </section>
+                          
+                          <section>
+                              <p class ="t_date">
+                              객월 예상가
+                              </p>
+                          </section>
+                      </div>
+                      <div class = 'rowBox'>
+                          <section>
+                              <p class ='won'>₩</p>
+                              <p id = "now_p" class ='price'>{{r.price}} </p>
+                          </section>
+                          <section>
+                              <p class ='won'>₩</p>
+                              <p id = "next_p" class ='price'>{{r.nextprice}} </p>
+                          </section>
+                      </div>
+                      <div class = 'line'></div>
+                      {% if r.percent > 0 %}
+                      <div class = "up_centerBox">
+                          <p class = "text">전월대비</p>
+                          <p class = "result">{{r.percent}}</p>
+                          <p class = "percent">%</p>
+                          <img src = "{% static 'img/main-arrow-up.png' %}" alt = "상승"/>
+                      </div>
+                      {% else %}
+                      <div class = "down_centerBox">
+                        <p class = "text">전월대비</p>
+                        <p class = "result">{{r.percent}}</p>
+                        <p class = "percent">%</p>
+                        <img src = "{% static 'img/main-arrow-down.png' %}" alt = "하락"/>
+                        </div>
+                      {% endif %}
+                  </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <hr class='line'>
+    <section class="content-full">
+        <div class="content">
+            <h2 class="bold-title">다음달 먹거리의 가격을 살펴보세요
+            </h2>
+            <p class="des-tip">가공품과 관련있는 원자재들의 가격 지표를 모아 인공지능 학습을 통해 다음달 가격을 예측합니다.</p>
+            <div class="ent-content2">
+                <ul>
+                    <li class="wow slideInUp" data-wow-duration="0.5s" data-aos="fade-up">
+                        <div class="img-box"><img loading="lazy" src="{% static 'img/home_graph.png' %}" alt="그래프"></div>
+                        <div class="desc-box">
+                            <h3>다음 달 예측가 확인
+                            </h3>
+                            <p>각 품목별 가공품에 해당하는 제품 링크를 통해 다음달의 예측 가격을 확인할 수 있습니다.
+                            </p>
+                        </div>
+                    </li>
+                    <li class="wow slideInUp" data-wow-duration="0.8s" data-aos="fade-up">
+                        <div class="img-box"><img loading="lazy" src="{% static 'img/home_coin.png' %}" alt="코인"></div>
+                        <div class="desc-box">
+                            <h3>코인 서비스
+                            </h3>
+                            <p>보유 포인트로 다음 달에 상승할 것으로 예상되는 물품들을 구매해보세요. 예측에 성공하면 상승에 비례하여 포인트를 지급합니다. 포인트는 추후 물건 구매 시 할인을 제공할 예정입니다.</p>
+                        </div>
+                    </li>
+                    <li class="wow slideInUp" data-wow-duration="1s" data-aos="fade-up">
+                        <div class="img-box"><img loading="lazy" src="{% static 'img/home_recommend.png' %}" alt="추천"></div>
+                        <div class="desc-box">
+                            <h3>최저가 확인</h3>
+                            <p>관련 제품 품목 링크에는 해당 제품을 판매하는 최저가 링크를 제공합니다. (쿠팡)
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section id="team">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h2>제작</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="details">
+                            <h4>강혜진</h4>
+                            <span>a011003@aivle.kt.co.kr</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="details">
+                            <h4>서아현</h4>
+                            <span>a011045@aivle.kt.co.kr</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="details">
+                            <h4>이태우</h4>
+                            <span>a011081@aivle.kt.co.kr</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="details">
+                            <h4>조영래</h4>
+                            <span>a011098@aivle.kt.co.kr</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="details">
+                            <h4>조용준</h4>
+                            <span>a011099@aivle.kt.co.kr</span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="details">
+                            <h4>진정한</h4>
+                            <span>a011102@aivle.kt.co.kr</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="member">
+                        <div class="details">
+                            <h4>최승훈</h4>
+                            <span>a011106@aivle.kt.co.kr</span>
+                        </div>
+                    </div>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+{% endblock contents %}
+
+{% block script_section %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<!-- Vendor JS Files -->
+<script src="{% static 'vendor/aos/aos.js' %}"></script>
+<script src="{% static 'vendor/glightbox/js/glightbox.min.js' %}"></script>
+<script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
+<script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+
+<!-- Template Reveal JS File -->
+<script src="{% static 'js/reveal.js'%}"></script>
+
+<script>
+
     $(function() {
 		var price_list =[
-            '신라면','카누',
-            '진라면','닭고기',
-            '돼지고기(등심)','돼지고기(안심)',
-            '소고기','계란 30구',
-            '[동서식품]맥심 모카골드 믹스'
+            {% for item in search_list %}
+            "{{ item.pName }}",
+            {% endfor %}
         ]
 		$("#value").autocomplete({  
 			source : price_list,	
@@ -148,28 +482,12 @@
 <script>
     function search() {
         var price = document.getElementById('value').value;
-        if (price=='진라면'){
-            location.href="price/1/";
-        }else if (price=='신라면'){
-            location.href="price/2/";
-        }else if (price=='돼지고기(등심)'){
-            location.href="price/3/";
-        }else if (price=='돼지고기(안심)'){
-            location.href="price/4/";
-        }else if (price=='소고기'){
-            location.href="price/5/";
-        }else if (price=='[동서식품]맥심 모카골드 믹스'){
-            location.href="price/6/";
-        }else if (price=='카누'){
-            location.href="price/7/";
-        }else if (price=='닭고기'){
-            location.href="price/8/";
-        }else if (price=='계란 30구'){
-            location.href="price/9/";
-        }else {
-            alert('다시 입력해주세요!')
-            document.getElementById("value").value ='';
+        {% for item in search_list %}
+        if(price == "{{item.pName}}"){
+            location.href="price/" + "{{item.pNo}}"+"/"
         }
+        {% endfor %}
     }
-    </script>
-{% endblock contents %}
+</script>
+
+{% endblock script_section %}

@@ -23,6 +23,7 @@ class Product(models.Model):
     pSearchcount = IntegerField(default=0)
     pWishcount = IntegerField(default=0)
     RMSE = FloatField(default=0, null=True)
+    MAPE = FloatField(default=0, null=True)
     pImage = CharField(max_length=255, null=True)
     cKey = models.ForeignKey(
         Categori, on_delete=models.CASCADE, db_column='cKey', null=True)
@@ -30,7 +31,7 @@ class Product(models.Model):
     wish_user = models.ManyToManyField(
         settings.AUTH_USER_MODEL,
         blank=True,
-        related_name='wish_user'
+        related_name='wish_product'
     )
 
     def count_wish_user(self):

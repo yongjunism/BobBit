@@ -81,7 +81,7 @@ def C_to_DB_consumerprice(spec_list, product_csv, materials_csv):
 
 
 # 추출하고 싶은 상품 list
-spec_list = ['[동서식품]맥심 모카골드 믹스']
+spec_list = ['[동서식품]맥심 모카골드 믹스','계란']
 # 커피 csv
 product_csv = 'price_consumer_coffee.csv'
 # 원자재 csv
