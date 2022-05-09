@@ -44,4 +44,4 @@ def get_response(request):
 
 def home(request):
 	context = {'title': 'Bobbot'}
-	return render(request,'C:/Users/User/Documents/GitHub/BobBit/sili/templates/sili.html', context)
+	return render(request,'sili.html', context)
