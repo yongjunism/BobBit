@@ -8,7 +8,7 @@ p = Preprocess(word2index_dic='sili/train_tools/dict/chatbot_dict.bin',
                userdic = 'sili/utils/user_dic.tsv')
 
 intent = IntentModel(model_name='sili\models\intent\intent_model.h5', proprocess=p)
-query = "오늘 아이스크림 주문 가능한가요?"
+query = "아이스크림 정보"
 predict = intent.predict_class(query)
 predict_label = intent.labels[predict]
 
