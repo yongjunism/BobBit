@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     "rank",
     "bbadmin",
     'rest_framework',
+    "sili"
 ]
 
 MIDDLEWARE = [
