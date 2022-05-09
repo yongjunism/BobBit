@@ -59,10 +59,7 @@ def df_formatting(price, df, material):
 
     df = df.replace('-', np.NaN)
 
-    print(df['거래량'].isna().sum()/len(df))
-    print(df['거래량'].isna().sum())
-    print(len(df))
-    print(df)
+
     if (df['거래량'].isna().sum()/len(df)) > 0.8:
         df.drop('거래량', axis=1, inplace=True)
     # formatting
