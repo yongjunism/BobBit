@@ -29,6 +29,52 @@
         padding: 50px
         align-self: auto;
       }
+
+      .user-btn1 {
+        height: 36px;
+        width: 133px;
+        line-height: 32px;
+        border-radius: 10px;
+        border: 2px solid #194740;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #194740;
+        text-align: center;
+        margin-left: 2px;
+        display: block;
+        background: rgba(255, 255, 255, 0.3);
+        float: left;
+        margin-right: 2px !important;
+    }
+    
+    .user-btn1:hover {
+        background-color: #194740;
+        border-color: #194740;
+        color: #ffffff;
+    }
+
+      .user-btn2 {
+        height: 36px;
+        width: 133px;
+        line-height: 32px;
+        border-radius: 20px;
+        border: 2px solid #194740;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        color: #194740;
+        text-align: center;
+        margin-left: 30px;
+        display: block;
+        background: rgba(255, 255, 255, 0.3);
+        float: left;
+        margin-right: 20px !important;
+    }
+        
+    .user-btn2:hover {
+      background-color: #194740;
+      border-color: #194740;
+      color: #ffffff;
+  }
     </style>
   </header>
   <section class="content">
@@ -41,10 +87,12 @@
         {% endif %}
         <br>
         {{ user.username }}님
+        <br>
+        <br>
     </div>
             <div class="buttons"> 
-                <button id="" onclick="location.href='/mypage/changeprofile/'" class="btn btn-outline-primary px-4">회원정보 변경</button> 
-                <button id="profile_delete" onclick="location.href='/mypage/profile/delete' "class="btn btn-primary px-4 ms-3">회원탈퇴</button> </div>
+                <button id="" onclick="location.href='/mypage/changeprofile/'" class="user-btn2">회원정보 변경</button> 
+                <button id="profile_delete" onclick="location.href='/mypage/profile/delete'" class="user-btn2">회원탈퇴</button> </div>
           <div class="container">
             <div class="item">이름</div>
             <hr style="border: thin solid; width: 40%;">
@@ -62,8 +110,7 @@
             <br>
             <br>
             <div class="item">
-              <button id="" onclick="location.href='/mypage/profile/wishlist/'" class="btn btn-outline-primary px-4">찜한 상품목록</button></div>
-            <hr style="border: thin solid; width: 40%;">
+              <button id="" onclick="location.href='/mypage/profile/wishlist/'" class="user-btn1">찜한 상품목록</button></div>
           </div>
     </section>
 

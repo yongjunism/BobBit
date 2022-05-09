@@ -1,6 +1,49 @@
 {% extends 'base/base.html' %}
 {% load static %}
 {% block head %}
+{% comment %} 챗봇 head 시작 {% endcomment %}
+<script type="text/javascript" src="/static/js/dev-vue.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<script type="text/javascript" src="/static/js/script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css"/>
+<style>
+    .navbar-light{background-color:#d9e6e9 !important;height:68px;}
+    .navbar-brand {
+        font-size: 2.2rem !important;
+        font-style: italic !important;
+        font-weight: bold !important;
+        color: black !important;
+    }
+    .offset-md-6{margin-left:0% !important; background-color:#e8b4d4 !important;}
+    .card{margin-left:50%;border-radius:30px !important;background-color:#b4dae7 !important;}
+    .bg-info{width:760px; margin:0 auto;background-color:#d9e6e9 !important;}
+    .card-body{font-style:normal !important; padding:0.8rem !important; text-align:left !important;}
+    .navbar-brand{margin:0 auto;}
+    textarea{width:440px !important;}
+    #app ::-webkit-scrollbar {display: none;}
+    #app{width:470px;height:640px;}
+    .send-btn{top:21px;}
+    *,
+    *::before,
+    *::after {box-sizing: content-box;}
+    #app *,
+    *::before,
+    *::after {box-sizing: border-box;}
+    body{font-family: 'Noto Sans KR', sans-serif !important;}
+    a{text-decoration: none !important;}
+    p{margin-top:16px;}
+    .chatbot{position: fixed;left:1530px;top:710px;}
+    button{border:0px solid red; background-color:transparent;}
+    .chatbot img{width:70px; height:70px;}
+    .modal{left:1100px !important ;top:136px !important; text-align:center}
+    .modal a.close-modal{display:none;}
+    .offset-md-6 {background-color: #e8b4d4 !important;}
+</style>
+{% comment %} 챗봇 head 끝 {% endcomment %}
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 <link href="{% static 'css/home.css' %}" rel="stylesheet">
 <link href="{% static 'css/enterprise432b.css' %}" rel="stylesheet">
@@ -322,7 +365,32 @@
             </div>
         </div>
     </section>
+{% comment %} 챗봇 부분 시작 {% endcomment %}
+<div class="chatbot"><a href="#app" rel="modal:open"><button><img src="media\profile\그림1.png"></button></a></div>
+<main style="display: none !important">
+    <div id="app" class="container top-padding">
+        <nav class="navbar-light" style="width:440px;">
+            <span class="navbar-brand mb-0 display-1">Bobbot</span> 
+        </nav>
+        <div class="row">
+            <div class="offset-md-2 col-sm-12" style= "height:450px;overflow-y:scroll;margin:0 auto;margin-top:10px;">
+                <div class="card col-md-6" v-for="message in messages" v-bind:class="{'user-message': message.user,  'chat-message': message.chat_bot, 'offset-md-6': message.chat_bot}">
+                    <div class="card-body">
+                        [[message.text]]
+                    </div>
+                </div>
+            </div>
 
+        </div>
+        <div id="text-box" class="row top-padding">
+            <div class="col-md-8">
+                <textarea placeholder="질문을 입력하세요.." class="form-control" v-model="input" v-bind:class="{ 'border-danger': send_blank}" v-on:change="check_content"></textarea>
+                <i class="fas fa-arrow-circle-right send-btn" v-on:click="add_message" style="right:-128px;"></i>
+            </div>
+        </div>
+    </div>
+</main>
+{% comment %} 챗봇부분 끝 {% endcomment %}
 {% endblock contents %}
 
 {% block script_section %}
@@ -340,7 +408,6 @@
 <script src="{% static 'js/reveal.js'%}"></script>
 
 <script>
-
     $(function() {
 		var price_list =[
             {% for item in search_list %}
@@ -378,5 +445,4 @@
         {% endfor %}
     }
 </script>
-
 {% endblock script_section %}
