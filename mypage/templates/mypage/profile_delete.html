@@ -3,11 +3,35 @@
 {% load static %}
 {% block contents %}
 <header>
-    
     <style>
       section { 
         text-align: center;
       }
+      .s1 {
+        border: thin solid black;
+        border-radius: 10px;
+        border: 2px solid #194740;
+        margin: auto;
+        width: 180px;
+        height: 36px;
+        line-height: 32px;
+        position: relative;
+        top: 15px;
+        color: #194740;
+        text-align: center;
+    }
+    .s2 {
+        height: 36px;
+        width: 133px;
+        line-height: 32px;
+        border-radius: 20px;
+        border: 2px solid #194740;
+        color: #194740;
+        position: relative;
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px !important;
+    }
     </style>
   </header>
 <section class="content">
@@ -29,13 +53,19 @@
         <span>유의사항 동의</span>
     </label>
     
-    <button type="submit" name="bt" disabled="true">탈퇴하기</button>
+    <button class="s2" type="submit" name="bt" disabled="true">탈퇴하기</button>
     
 {% empty %}
     {% if user.is_authenticated %}
     <div>
         <label name="label_password" for="{{ password_form.password.id_for_label }}">{{ password_form.password.label }}</label>
+        <div class="s1">
         {{ password_form.password }}
+        </div>
+        <br>
+        <small>
+            본인인증을 위해 비밀번호를 입력해주세요.
+        </small>
         {% if password_form.password.errors %}
         <script type="text/javascript">
             document.getElementsByName('password')[0].setAttribute('class', 'form-control is-invalid')
@@ -46,17 +76,15 @@
         </div>
         {% endfor %}
         {% endif %}
-        <small>
-            본인인증을 위해 비밀번호를 입력해주세요.
-        </small>
-    </div>
 
+    </div>
+    <br>
     <label>
         <input type="checkbox" name="ck" onClick="checkDisable(this.form)">
         <span>유의사항 동의</span>
     </label>
 
-    <button type="submit" name="bt" disabled="true" >탈퇴하기</button>
+    <button class="s2" type="submit" name="bt" disabled="true" >탈퇴하기</button>
     {% endif %}
 {% endfor %}
  
