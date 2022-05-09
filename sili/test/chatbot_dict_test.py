@@ -8,7 +8,7 @@ f = open("sili/train_tools/dict/chatbot_dict.bin", "rb")
 word_index = pickle.load(f)
 f.close()
 
-sent = "내일 오전 10시에 아이스크림 주문하고 싶어 ㅋㅋ"
+sent = "아이스크림 가격 정보"
 
 # 전처리 객체 생성
 p = Preprocess(userdic='sili/utils/user_dic.tsv')
