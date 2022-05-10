@@ -3,6 +3,7 @@
  <h1 style='text-align:center; font-size: 60px; '>밥비트🍚</h1>
  <p align="center">
   <h3>소비자를 위한  물가 예측 서비스</h3>
+  <h6>개발기간 : 2022/04/11 ~ 2022/05/11</h6>
 </div>
 
 <br>
@@ -133,7 +134,6 @@
 <br>
 
 ## 5. 개발 환경
-
 
 <br>
 
