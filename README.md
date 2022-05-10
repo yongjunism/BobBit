@@ -95,19 +95,15 @@
 <br>
 
 ## 3. 서비스 FLOW
- > - 코로나로 인한 폐업과 상권 경쟁 심화 문제
- > - 방대한 카페 자료로 인한 쉬운 검색서비스 필요
- > - 이미지 기반 추천 시스템으로 경쟁력 확보
-<!-- <img src='https://github.com/AIVLE-School-first-Big-Project/Acachu/blob/main/readmeImage/background.PNG?raw=true' height='400'> -->
 <br>
 
 ## 4. ERD
-<img src='https://github.com/AIVLE-School-first-Big-Project/Acachu/blob/main/readmeImage/erd.png?raw=true'>
+
 
 <br>
 
 ## 5. 개발 환경
-<img src='https://github.com/AIVLE-School-first-Big-Project/Acachu/blob/main/readmeImage/effet.PNG?raw=true' height='350'>
+
 
 <br>
 
