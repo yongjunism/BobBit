@@ -22,11 +22,17 @@ class FindAnswer:
         return sql
 
     # 답변 검색
-    def search(self, intent_name, ner_tags):
+    def search(self, intent_name, ner_predicts, ner_tags):
         # 의도명, 개체명으로 답변 검색
         sql = self._make_query(intent_name, ner_tags)
         answer = self.db.select_one(sql)
-
+        if intent_name=="정보":
+            where = ' where pName="%s" ' % ner_predicts[0][0]
+            sql = "select nextprice from Product "
+            sql = sql + where
+            plus = self.db.select_one(sql)
+            plus=plus["nextprice"]
+            return ("다음달 계란 가격은 "+answer['answer']+str(plus)+"원 으로 예상됩니다!", answer['answer_image'])
         # 검색되는 답변이 없으면 의도명만 검색
         if answer is None:
             sql = self._make_query(intent_name, None)
