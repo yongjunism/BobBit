@@ -5,8 +5,7 @@
  <p align="center">
   
  <pre align="center"> 
- yolov5 모델로 사용자들의 냉장고 속 재료를 분석하여 
- 만개의 레시피에서 크롤링한 데이터를 바탕으로 레시피를 추천해주는 모델을 제작하였습니다.
+ 소비자를 위한  물가 예측 서비스
  </pre>
 </div>
 <details open="open">
