@@ -20,11 +20,11 @@ def get_news(keyword):
 def predictRelView(request, product):
     product_mat = {
         'ramyun': ['런던 설탕', '런던 소맥', '미국 대두', '미국 팜유', '미국 소맥' ],
-        'bob':['쌀'],
-        'sauce':['미국 대두'],
-        'egg':['계란'],
-        'ice':['런던 설탕'],
-        'coffee':['런던 설탕']
+        'bob':['쌀 가격'],
+        'sauce':['미국 대두', '미국 소맥', '런던 소맥'],
+        'egg':['미국 옥수수', '런던 소맥', '미국 소맥', '귀리', '미국 대두박'],
+        'ice':['런던 설탕', '미국 설탕', '런던 커피', '미국 커피', ],
+        'coffee':['런던 설탕', '미국 설탕', '미국 팜유']
     }
 
     products = Product.objects.all()

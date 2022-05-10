@@ -5,7 +5,7 @@ import json
 from sili.config.DatabaseConfig import *
 from sili.utils.Database import Database
 from sili.utils.BotServer import BotServer
-from sili.utils.Preprocess import Preprocess
+from utils.Preprocess import Preprocess
 from sili.models.intent.IntentModel import IntentModel
 from sili.models.ner.NerModel import NerModel
 from sili.utils.FindAnswer import FindAnswer
@@ -16,7 +16,7 @@ p = Preprocess(word2index_dic='sili/train_tools/dict/chatbot_dict.bin',
                userdic = 'sili/utils/user_dic.tsv')
 
 # 의도 파악 모델
-intent = IntentModel(model_name='sili\models\intent\intent_model.h5', proprocess=p)
+intent = IntentModel(model_name='sili/models/intent/intent_model.h5', proprocess=p)
 
 # 개체명 인식 모델
 ner = NerModel(model_name='sili/models/ner/ner_model.h5', proprocess=p)
