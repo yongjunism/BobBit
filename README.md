@@ -3,140 +3,45 @@
  <h1 style='text-align:center; font-size: 60px; '>밥비트🍚</h1>
  </p>
  <p align="center">
-  
- <pre align="center"> 
- 소비자를 위한  물가 예측 서비스
- </pre>
+  <h3>소비자를 위한  물가 예측 서비스</h3>
 </div>
-<details open="open">
-  <summary>목차</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li><a href="#live-demo">Live Demo</a></li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgements">Acknowledgements</a></li>
-  </ol>
-</details>
+
+##  0. 조원 소개
+- 진정한(조장), 강혜진, 서아현, 이태우, 조영래, 조용준, 최승훈
+
+## 1. 개발 배경 및 목적
+
+
+<br>
+
+## 2. 기능 및 UI/UX
+<img src='https://github.com/AIVLE-School-first-Big-Project/Acachu/blob/main/readmeImage/serviceflow.png?raw=true'>
+
+<br>
+
+## 3. 서비스 FLOW
+ > - 코로나로 인한 폐업과 상권 경쟁 심화 문제
+ > - 방대한 카페 자료로 인한 쉬운 검색서비스 필요
+ > - 이미지 기반 추천 시스템으로 경쟁력 확보
+<!-- <img src='https://github.com/AIVLE-School-first-Big-Project/Acachu/blob/main/readmeImage/background.PNG?raw=true' height='400'> -->
+<br>
+
+## 4. ERD
+<img src='https://github.com/AIVLE-School-first-Big-Project/Acachu/blob/main/readmeImage/erd.png?raw=true'>
+
+<br>
+
+## 5. 개발 환경
+<img src='https://github.com/AIVLE-School-first-Big-Project/Acachu/blob/main/readmeImage/effet.PNG?raw=true' height='350'>
+
+<br>
+
+## 6. 기대 효과
+
+<br>
+
+## 7. 유저 가이드
 
 
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-[![Product Name Screen Shot](preview/preview.png)](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
-
-
-### Built With
-
-* []()
-* []()
-
-
-<!-- LIVE DEMO -->
-
-## Live Demo
-
-[Live Demo Link](https://example.com)
-
-
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-To get a local copy up and running follow these simple steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/github_username/repo_name.git
-   ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
-
-<!-- CONTACT -->
-## Contact
-
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
-
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-
-* []()
-* []()
-
-
-
+<br>
