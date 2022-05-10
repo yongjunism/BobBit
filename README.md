@@ -139,7 +139,7 @@
 
 ## 6. 기대 효과
 <details>
-  <summary>개인</summary>
+  <summary><h4>개인</h4></summary>
  <br>
    <div markdown="7">
      <text>
@@ -151,7 +151,7 @@
    </div>
 </details>
 <details>
-  <summary>기업</summary>
+  <summary><h4>기업</h4></summary>
  <br>
    <div markdown="8">
      <text>
