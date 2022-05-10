@@ -5,7 +5,7 @@ import json
 from sili.config.DatabaseConfig import *
 from sili.utils.Database import Database
 from sili.utils.BotServer import BotServer
-from sili.utils.Preprocess import Preprocess
+from utils.Preprocess import Preprocess
 from sili.models.intent.IntentModel import IntentModel
 from sili.models.ner.NerModel import NerModel
 from sili.utils.FindAnswer import FindAnswer
