@@ -1,6 +1,6 @@
 <!-- TABLE OF CONTENTS -->
 <div align="center">
- <div style='text-align:center; font-size: 40px'>밥비트</div>
+ <div style='text-align:center; font-size: 60px; '>**밥비트**</div>
  </p>
  <p align="center">
   
