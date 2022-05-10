@@ -6,9 +6,12 @@
     <title>질문게시판</title>
     <meta charset="utf-8" />
     <style>
+        textarea{width:699px;}
+        .header-content .header-user .header-user-profile .header-user-profile-text{min-width:10rem;}
+        p{margin:0 0 0px !important;}
         span{color:black}
         a{text-decoration: none !important;}
-        body{font-family: 'Noto Sans KR', sans-serif !important; }
+        body{font-family: 'Noto Sans KR', sans-serif !important;font-size:16px !important;}
         th{width:100px;text-align: center !important; background-color:#d9e6e9;}
         th, tr{padding:12px !important; vertical-align:middle !important;font-size: 1.6rem;}
         td{vertical-align : middle !important;}
@@ -111,5 +114,6 @@
     {{formdelete.id.as_hidden}}
     {{formdelete.board_id.as_hidden}}
 </form>
-
+<div style="height:200px;">
+</div>
 {% endblock contents %}

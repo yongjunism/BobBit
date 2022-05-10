@@ -5,7 +5,7 @@ import json
 from sili.config.DatabaseConfig import *
 from sili.utils.Database import Database
 from sili.utils.BotServer import BotServer
-from sili.utils.Preprocess import Preprocess
+from utils.Preprocess import Preprocess
 from sili.models.intent.IntentModel import IntentModel
 from sili.models.ner.NerModel import NerModel
 from sili.utils.FindAnswer import FindAnswer
@@ -56,9 +56,11 @@ def to_client(conn, addr, params):
         # 답변 검색
         try:
             f = FindAnswer(db)
-            answer_text, answer_image = f.search(intent_name, ner_tags)
+            answer_text, answer_image = f.search(intent_name, ner_predicts, ner_tags)
             answer = f.tag_to_word(ner_predicts, answer_text)
-
+            # if intent_name == "정보":
+            #     # answer = answer+ner_predicts[0][0]
+            #     answer = ner_tags
         except:
             answer = "이해하지 못했어요. 조금 더 공부 할게요."
             answer_image = None
