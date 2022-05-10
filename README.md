@@ -27,7 +27,7 @@
      <br>
      <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/mainpage.png">
      <br>
-     <text>:black_small_square: 버터보이스의 홈화면으로 회원가입과 로그인을 할 수 있는 버튼이 있다</text>
+     <text>:black_small_square: 검색창의 자동완성 기능으로 사용자 편의 제공<br>:black_small_square: 급등 예상 품목 순위 제공</text>
      <br>
    </div>
 </details>
@@ -38,7 +38,11 @@
      <br>
      <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/price.png">
      <br>
-     <text>:black_small_square: 버터보이스의 홈화면으로 회원가입과 로그인을 할 수 있는 버튼이 있다</text>
+     <text>
+     :black_small_square: 찜 기능<br>
+     :black_small_square: 품목에 대한 예측 가격 확인<br>
+     :black_small_square: 보유 포인트로 해당 물품 구매 <br> :black_small_square: 관련 상품에 대한 구매 링크 제공
+     </text>
      <br>
    </div>
 </details>
@@ -49,7 +53,7 @@
      <br>
      <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/Bobbot.png">
      <br>
-     <text>:black_small_square: 버터보이스의 홈화면으로 회원가입과 로그인을 할 수 있는 버튼이 있다</text>
+     <text>:black_small_square: 챗봇을 통해 사용자의 편의 제공</text>
    </div>
 </details>
 
@@ -77,7 +81,6 @@
      <br>
      <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/QnA.png">
      <br>
-     <text>:black_small_square: 버터보이스의 홈화면으로 회원가입과 로그인을 할 수 있는 버튼이 있다</text>
    </div>
 </details>
 
@@ -87,7 +90,7 @@
      <br>
      <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/rank.png">
      <br>
-     <text>:black_small_square: 버터보이스의 홈화면으로 회원가입과 로그인을 할 수 있는 버튼이 있다</text>
+     <text>:black_small_square: 사용자의 포인트 순위를 정함</text>
    </div>
 </details>
 
