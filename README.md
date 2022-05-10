@@ -1,30 +1,20 @@
-<!-- PROJECT LOGO -->
-
-<p align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="preview/logo.png" alt="Logo" width="80" height="80">
-  </a>
-
-  <h3 align="center">project_title</h3>
-
-  <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
-  </p>
-</p>
-
-
-
 <!-- TABLE OF CONTENTS -->
-
+<div align="center">
+ <div style='text-align:center; font-size: 40px'>Eat-village</div>
+ </p>
+ <p align="center">
+  <b>수도권 4반 2조(9조) : 우리는 모두 친9조</b>
+ </p>
+ <p align="center">
+  KT AIVLE-School-first-Big-Project : 2022-04-11 ~ 2022-05-11 </p><br><br>
+  
+ <pre align="center"> 
+ yolov5 모델로 사용자들의 냉장고 속 재료를 분석하여 
+ 만개의 레시피에서 크롤링한 데이터를 바탕으로 레시피를 추천해주는 모델을 제작하였습니다.
+ </pre>
+</div>
 <details open="open">
-  <summary>Table of Contents</summary>
+  <summary>목차</summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
