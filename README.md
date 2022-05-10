@@ -1,5 +1,5 @@
-<!-- TABLE OF CONTENTS -->
 <div align="center">
+ <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/poster.png">
  <h1 style='text-align:center; font-size: 60px; '>밥비트🍚</h1>
  <p align="center">
   <h3>소비자를 위한  물가 예측 서비스</h3>
