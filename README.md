@@ -1,12 +1,8 @@
 <!-- TABLE OF CONTENTS -->
 <div align="center">
- <div style='text-align:center; font-size: 40px'>Eat-village</div>
+ <div style='text-align:center; font-size: 40px'>밥비트</div>
  </p>
  <p align="center">
-  <b>수도권 4반 2조(9조) : 우리는 모두 친9조</b>
- </p>
- <p align="center">
-  KT AIVLE-School-first-Big-Project : 2022-04-11 ~ 2022-05-11 </p><br><br>
   
  <pre align="center"> 
  yolov5 모델로 사용자들의 냉장고 속 재료를 분석하여 
