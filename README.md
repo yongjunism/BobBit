@@ -23,13 +23,37 @@
 ## 2. 기능 및 UI/UX
 <details>
   <summary>메인 페이지</summary>
-   <div markdown="1" align="center">       
+   <div markdown="0" align="center">       
      <br>
      <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/mainpage.png">
      <br>
      <text>:black_small_square: 검색창의 자동완성 기능으로 사용자 편의 제공<br>:black_small_square: 급등 예상 품목 순위 제공</text>
      <br>
    </div>
+</details>
+
+<details>
+  <summary>마이 페이지</summary>
+   <div markdown="1">
+    <div align="center">
+     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/mypage.png'>
+    </div>
+    <br><br>
+     <text>:black_small_square: 찜 목록</text>
+     <div align="center">
+     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/wishlist.png'>
+     </div>
+     <br><br>
+     <text>:black_small_square: 회원 수정</text>
+     <div align="center">
+     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/chagemyinfo.png">
+     </div>
+    <br><br>
+     <text>:black_small_square: 회원 탈퇴</text>
+     <div align="center">
+     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/delmyinfo.png"'>
+    </div>
+  </div>
 </details>
 
 <details>
