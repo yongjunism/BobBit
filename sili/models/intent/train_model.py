@@ -56,7 +56,7 @@ EPOCH = 5
 VOCAB_SIZE = len(p.word_index) + 1 #전체 단어 개수
 
 
-# CNN 모델 정의  ○4
+# CNN 모델
 input_layer = Input(shape=(MAX_SEQ_LEN,))
 embedding_layer = Embedding(VOCAB_SIZE, EMB_SIZE, input_length=MAX_SEQ_LEN)(input_layer)
 dropout_emb = Dropout(rate=dropout_prob)(embedding_layer)

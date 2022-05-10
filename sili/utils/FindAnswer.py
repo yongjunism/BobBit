@@ -32,7 +32,7 @@ class FindAnswer:
             sql = sql + where
             plus = self.db.select_one(sql)
             plus=plus["nextprice"]
-            return ("다음달 계란 가격은 "+answer['answer']+str(plus)+"원 으로 예상됩니다!", answer['answer_image'])
+            return ("다음달 "+answer['answer']+str(plus)+"원 으로 예상됩니다!", answer['answer_image'])
         # 검색되는 답변이 없으면 의도명만 검색
         if answer is None:
             sql = self._make_query(intent_name, None)
