@@ -1,7 +1,6 @@
 <!-- TABLE OF CONTENTS -->
 <div align="center">
  <h1 style='text-align:center; font-size: 60px; '>밥비트🍚</h1>
- </p>
  <p align="center">
   <h3>소비자를 위한  물가 예측 서비스</h3>
 </div>
@@ -34,26 +33,28 @@
 
 <details>
   <summary>마이 페이지</summary>
-   <div markdown="1">
+   <div markdown="0" >       
+     <br>
     <div align="center">
-     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/mypage.png'>
+     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/mypage.png" align="center">
     </div>
     <br><br>
-     <text>:black_small_square: 찜 목록</text>
-     <div align="center">
-     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/wishlist.png'>
-     </div>
-     <br><br>
-     <text>:black_small_square: 회원 수정</text>
-     <div align="center">
+    <text>:black_small_square: 찜 상품 목록</text>
+    <div align="center">
+     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/wishlist.png">
+    </div>
+    <br><br>
+    <text>:black_small_square: 회원 수정</text>
+    <div align="center">
      <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/chagemyinfo.png">
-     </div>
-    <br><br>
-     <text>:black_small_square: 회원 탈퇴</text>
-     <div align="center">
-     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/delmyinfo.png"'>
     </div>
-  </div>
+    <br><br>
+    <text>:black_small_square: 회원 탈퇴</text>
+    <div align="center">
+     <img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/delmyinfo.png">
+    </div>
+    <br><br>
+   </div>
 </details>
 
 <details>
@@ -117,14 +118,16 @@
      <text>:black_small_square: 사용자의 포인트 순위를 정함</text>
    </div>
 </details>
-
-
 <br>
+
 
 ## 3. 서비스 FLOW
+<img src="https://github.com/AIVLE-School-first-Big-Project/BobBit/blob/main/readme/Flow.png">
 <br>
 
-## 4. ERD
+## 4. 데이터 출처
+- <a href="https://kr.investing.com/">Investing.com(원자재 가격)</a>
+- <a href="http://price.consumer.or.kr/">소비자물가정보서비스(물가)</a>
 
 
 <br>
@@ -135,7 +138,30 @@
 <br>
 
 ## 6. 기대 효과
-
+<details>
+  <summary>개인</summary>
+ <br>
+   <div markdown="7">
+     <text>
+      :black_small_square: 다음 달 물가를 예측하여 재고 관리에 도움<br>
+      :black_small_square: 포인트 사용을 통해 물건 구매에 도움<br>
+      :black_small_square: 일반 발화 입력 챗봇으로 정보를 제공함으로써 접근성 향상<br>
+    </text>
+     <br>
+   </div>
+</details>
+<details>
+  <summary>기업</summary>
+ <br>
+   <div markdown="8">
+     <text>
+      :black_small_square: KT커머스에서 진행하는 메타버스 전자상거래과 같은 서비스와 연동을 통해 사용자에게 정보 제공<br>
+      :black_small_square: 사용자에게 다양한 정보 제공을 통해 기업에 긍정적인 이미지 적용<br>
+      :black_small_square: AI 기반 모달형식의 챗봇 BTC 서비스 제공<br>
+    </text>
+     <br>
+   </div>
+</details>
 <br>
 
 ## 7. 유저 가이드
