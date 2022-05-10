@@ -1,6 +1,6 @@
 <!-- TABLE OF CONTENTS -->
 <div align="center">
- <h1 style='text-align:center; font-size: 60px; '>밥비트</h1>
+ <h1 style='text-align:center; font-size: 60px; '>밥비트🍚</h1>
  </p>
  <p align="center">
   
