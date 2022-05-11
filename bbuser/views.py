@@ -1,11 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import get_user_model
-from django.views.generic.base import TemplateView
 from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.views import LoginView
-
 
 from .forms import ProfileForm
 
@@ -36,7 +33,8 @@ def RegisterProfileView(request):
     form = ProfileForm()
     User = get_user_model()
     user = get_object_or_404(User, username=request.user)
-    return render(request, "user/register_profile.html", {"form": form, "user": user})
+    return render(request, "user/register_profile.html",
+                  {"form": form, "user": user})
 
 
 def pointUp(request):
@@ -45,7 +43,6 @@ def pointUp(request):
 
     user.first_login = 0
     user.save()
-
 
     if user.last_login2:
         if user.last_login2.day != datetime.today().day:
@@ -62,11 +59,3 @@ def pointUp(request):
     user.save()
 
     return redirect("/")
-
-# class UserLoginView(LoginView):     
-#     def form_valid(self, form):
-#         pointUp(self.request)
-#         return super().form_valid(form)    
-#     def form_invalid(self, form):
-#         messages.error(self.request, '로그인에 실패하였습니다.', extra_tags='danger')
-#         return super().form_invalid(form)    
