@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     "allauth.socialaccount.providers.naver",
     "qandaBoard",
     "pricePredict",
-    "chatbot",
     "bbuser",
     "mypage",
     "rank",
