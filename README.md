@@ -129,6 +129,7 @@
 ## 4. 데이터 출처
 - <a href="https://kr.investing.com/">Investing.com(원자재 가격)</a>
 - <a href="http://price.consumer.or.kr/">소비자물가정보서비스(물가)</a>
+- <a href="https://github.com/keiraydev/chatbot/blob/master/models/intent/total_train_data.csv">챗봇 학습데이터셋</a>
 
 
 <br>
