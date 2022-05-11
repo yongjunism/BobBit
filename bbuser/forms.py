@@ -1,5 +1,4 @@
 from django import forms
-from bbuser.models import User
 
 
 class ProfileForm(forms.Form):

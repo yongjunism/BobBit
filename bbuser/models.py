@@ -14,7 +14,8 @@ def content_file_name(instance, filename):
 
 class User(AbstractUser):
     nickname = models.CharField(max_length=20)
-    profile_img = models.ImageField(null=True, upload_to=content_file_name, blank=True)
+    profile_img = models.ImageField(null=True, upload_to=content_file_name,
+                                    blank=True)
     point = models.IntegerField(default=0)
     first_name = None
     first_login = models.IntegerField(default=0)
