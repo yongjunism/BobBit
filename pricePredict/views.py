@@ -1,7 +1,7 @@
-from operator import mod
+# from operator import mod
 from django.shortcuts import render
-from sympy import product
-from .models import Product, Categori, VirtualProduct
+# from sympy import product
+from .models import Product, VirtualProduct
 from django.forms.models import model_to_dict
 from datetime import date
 from .categori_to_emoji import EMOJI
@@ -12,8 +12,8 @@ from bs4 import BeautifulSoup
 from django.contrib.auth import get_user_model
 
 # Create your views here.
-import json
-from django.http import JsonResponse, HttpResponse
+# import json
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
