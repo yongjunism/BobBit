@@ -193,7 +193,7 @@
 - pip install -r requirements.txt
 - python manage.py makemigrations(최초실행시)
 - python manage.py migrate(최초실행시)
-- sili/config/<DatabaseConfig.py> 파일 추가 후 아래 내용 추가
+- sili/config/<DatabaseConfig.py> 파일 추가
   ```
   DB_HOST = "<DB_HOST>"
   DB_USER = "<DB_USER>"
