@@ -129,12 +129,21 @@
 ## 4. 데이터 출처
 - <a href="https://kr.investing.com/">Investing.com(원자재 가격)</a>
 - <a href="http://price.consumer.or.kr/">소비자물가정보서비스(물가)</a>
-
+- <a href="https://github.com/keiraydev/chatbot/blob/master/models/intent/total_train_data.csv">챗봇 학습데이터셋</a>
 
 <br>
 
 ## 5. 개발 환경
-
+<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=Django&logoColor=white"></a>
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white"></a>
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white"></a>
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"></a>
+<img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=CSS3&logoColor=white"></a>
+<img src="https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=TensorFlow&logoColor=white"></a>
+<img src="https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=Keras&logoColor=white"></a>
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white"></a>
+<img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=Amazon AWS&logoColor=white">
+<br>
 <br>
 
 ## 6. 기대 효과
@@ -166,6 +175,34 @@
 
 ## 7. 유저 가이드
 
+- git clone https://github.com/AIVLE-School-first-Big-Project/BobBit.git
+- 프로젝트 폴더에 <my_settings.py> 파일 추가
+  ```
+  SECRET_KEY = "<SECRET_KEY>"
+  DATABASES = {
+      "default": {
+          "ENGINE": "<ENGINE>",
+          'NAME': '<NAME>',
+          'USER': '<USER NAME>',
+          'PASSWORD': '<password>',
+          'HOST': '<HOST NAME>',
+          'PORT': <PORT NUM>,
+      }
+  }
+  ```
+- pip install -r requirements.txt
+- python manage.py makemigrations(최초실행시)
+- python manage.py migrate(최초실행시)
+- sili/config/<DatabaseConfig.py> 파일 추가
+  ```
+  DB_HOST = "<DB_HOST>"
+  DB_USER = "<DB_USER>"
+  DB_PASSWORD = "<DB_PASSWORD>"
+  DB_NAME = "<DB_NAME>"
 
+  def DatabaseConfig():
+      global DB_HOST, DB_USER, DB_PASSWORD, DB_NAME
+  ```
+- python manage.py runserver
 
 <br>
