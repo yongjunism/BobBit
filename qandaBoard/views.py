@@ -82,6 +82,4 @@ def detail(request, post_id):
     user = get_object_or_404(User, username=request.user)
     board.save()
     print(request.GET.get)
-    return render(request, 'qandaBoard/detail.html',
-    {'board':board, 'replys':replys,'user':user,'formdelete':formdelete, 'formreply':formreply })
-
+    return render(request,'qandaBoard/detail.html',{'board':board, 'replys':replys,'user':user,'formdelete':formdelete, 'formreply':formreply})
