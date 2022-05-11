@@ -4,14 +4,12 @@ from mypage.forms import ChangeProfileForm, CheckPasswordForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth import logout
 from django.contrib import messages
-from django.core.paginator import Paginator
-from pricePredict.models import Product, VirtualProduct
-from django.forms.models import model_to_dict
 
 
 @login_required
 def profile(request):
     return render(request, "mypage/profile.html")
+
 
 @login_required
 def ChangeProfileView(request):
@@ -38,8 +36,8 @@ def ChangeProfileView(request):
     form = ChangeProfileForm()
     User = get_user_model()
     user = get_object_or_404(User, username=request.user)
-    print(user)
     return render(request, "mypage/change_profile.html", {"form": form, "user": user})
+
 
 @login_required
 def profile_delete_view(request):
@@ -53,21 +51,18 @@ def profile_delete_view(request):
             return redirect('/accounts/login/')
         else:
             password_form = CheckPasswordForm(request.user, request.POST)
-        
             if password_form.is_valid():
                 request.user.delete()
                 logout(request)
                 messages.success(request, "회원탈퇴가 완료되었습니다.")
-                return redirect('/accounts/login/')        
+                return redirect('/accounts/login/')
     else:
         password_form = CheckPasswordForm(request.user)
-
-    return render(request, 'mypage/profile_delete.html', {'password_form':password_form})
+    return render(request, 'mypage/profile_delete.html', {'password_form': password_form})
 
 
 @login_required
 def product_wishlistView(request):
     user = request.user
-    w=user.wish_product.all()
-    
+    w = user.wish_product.all()
     return render(request, 'mypage/wishlist.html', {'w': w})
