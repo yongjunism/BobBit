@@ -30,7 +30,6 @@ urlpatterns = [
     path("rank/", include("rank.urls")),
     path("adminpg/", include("bbadmin.urls")),
     path("sili/", include("sili.urls")),
-    path("info/", include("productInfo.urls"), name="info"),
     path("predictrel/", include("predictRel.urls")),
     path("modal_check/", views.modal_check)
 ]

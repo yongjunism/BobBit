@@ -51,10 +51,9 @@ INSTALLED_APPS = [
     "mypage",
     "rank",
     "bbadmin",
-    'rest_framework',
     "sili",
-    "productInfo",
     "predictRel",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
