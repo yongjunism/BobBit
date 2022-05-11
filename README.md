@@ -131,7 +131,6 @@
 - <a href="http://price.consumer.or.kr/">소비자물가정보서비스(물가)</a>
 - <a href="https://github.com/keiraydev/chatbot/blob/master/models/intent/total_train_data.csv">챗봇 학습데이터셋</a>
 
-
 <br>
 
 ## 5. 개발 환경
@@ -175,6 +174,30 @@
 
 ## 7. 유저 가이드
 
+> git clone https://github.com/AIVLE-School-first-Big-Project/BobBit.git
+> 프로젝트 폴더에 <my_settings.py> 파일 추가 후 아래 내용 추가
+  SECRET_KEY = "<SECRET_KEY>"
+  DATABASES = {
+      "default": {
+          "ENGINE": "<ENGINE>",
+          'NAME': '<NAME>',
+          'USER': '<USER NAME>',
+          'PASSWORD': '<password>',
+          'HOST': '<HOST NAME>',
+          'PORT': <PORT NUM>,
+      }
+  }
+> pip install -r requirements.txt
+> python manage.py makemigrations(최초실행시)
+> python manage.py migrate(최초실행시)
+> sili/config/<DatabaseConfig.py> 파일 추가 후 아래 내용 추가
+  DB_HOST = "<DB_HOST>"
+  DB_USER = "<DB_USER>"
+  DB_PASSWORD = "<DB_PASSWORD>"
+  DB_NAME = "<DB_NAME>"
 
+  def DatabaseConfig():
+      global DB_HOST, DB_USER, DB_PASSWORD, DB_NAME
+> python manage.py runserver
 
 <br>
