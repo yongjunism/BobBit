@@ -1,14 +1,13 @@
 from django.db import models
-from django.db.models.fields import *
 from django.conf import settings
-from bbuser.models import User
-from pricePredict.models import Product
 import os
+
 
 def content_file_name(instance, filename):
     ext = filename.split(".")[-1]
     filename = "%s.%s" % (instance.id, ext)
     return os.path.join("profile", filename)
+
 
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
