@@ -33,8 +33,9 @@
 <br>
 
 ## 5. 개발 환경
-<img src='https://github.com/AIVLE-School-first-Big-Project/Acachu/blob/main/readmeImage/effet.PNG?raw=true' height='350'>
-
+<img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=HTML5&logoColor=white">
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white">
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
 <br>
 
 ## 6. 기대 효과
