@@ -27,7 +27,8 @@ class FindAnswer:
         sql = self._make_query(intent_name, ner_tags)
         answer = self.db.select_one(sql)
         if intent_name=="정보":
-            where = ' where pName="%s" ' % ner_predicts[0][0]
+            a = '%'+ner_predicts[0][0]+'%'
+            where = ' where pName LIKE "%s" ' % a
             sql = "select nextprice from Product "
             sql = sql + where
             plus = self.db.select_one(sql)
